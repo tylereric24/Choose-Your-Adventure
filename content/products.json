@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ghost-galleon",
+    "name": "Curse of the Ghost Galleon",
+    "description": "The Treasure Island sequel. Yours forever.",
+    "price": 299,
+    "grants": ["ghost-galleon"]
+  },
+  {
+    "id": "captains-pass",
+    "name": "Captain's Pass",
+    "description": "Every current story and every future one. One payment.",
+    "price": 699,
+    "grants": ["*"]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "name": "choose-your-adventure",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Branching text adventures with collectible endings and paid story packs.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "DEV_UNLOCK=1 node --watch server/index.js",
+    "validate": "node scripts/validate-stories.js",
+    "test": "node scripts/validate-stories.js && node --test"
+  }
+}

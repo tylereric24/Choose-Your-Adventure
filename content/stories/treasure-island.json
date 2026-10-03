@@ -1,0 +1,227 @@
+{
+  "id": "treasure-island",
+  "title": "Treasure Island",
+  "tagline": "Find the treasure. Try not to get eaten.",
+  "description": "A fork in the road, a castle with suspicious doors, a lake full of very patient crocodiles, and a treasure that is exactly as valuable as you deserve.",
+  "premium": false,
+  "order": 1,
+  "accent": "#e0a93b",
+  "sequel": "ghost-galleon",
+  "art": "*******************************************************************************\n          |                   |                  |                     |\n _________|________________.=\"\"_;=.______________|_____________________|_______\n|                   |  ,-\"_,=\"\"     `\"=.|                  |\n|___________________|__\"=._o`\"-._        `\"=.______________|___________________\n          |                `\"=._o`\"=._      _`\"=._                     |\n _________|_____________________:=._o \"=._.\"_.-=\"'\"=.__________________|_______\n|                   |    __.--\" , ; `\"=._o.\" ,-\"\"\"-._ \".   |\n|___________________|_._\"  ,. .` ` `` ,  `\"-._\"-._   \". '__|___________________\n          |           |o`\"=._` , \"` `; .\". ,  \"-._\"-._; ;              |\n _________|___________| ;`-.o`\"=._; .\" ` '`.\"\\` . \"-._ /_______________|_______\n|                   | |o;    `\"-.o`\"=._``  '` \" ,__.--o;   |\n|___________________|_| ;     (#) `-.o `\"=.`_.--\"_o.-; ;___|___________________\n____/______/______/___|o;._    \"      `\".o|o_.--\"    ;o;____/______/______/____\n/______/______/______/_\"=._o--._        ; | ;        ; ;/______/______/______/_\n____/______/______/______/__\"=._o--._   ;o|o;     _._;o;____/______/______/____\n/______/______/______/______/____\"=._o._; | ;_.--\"o.--\"_/______/______/______/_\n____/______/______/______/______/_____\"=.o|o_.--\"\"___/______/______/______/____\n/______/______/______/______/______/______/______/______/______/______/_____ /\n*******************************************************************************",
+  "start": "fork",
+  "nodes": {
+    "fork": {
+      "text": "Welcome to Treasure Island. Your mission is to find the treasure.\n\nYou arrive at a fork in the road. To the left, the spires of a crooked castle. To the right, the sound of rushing water. Behind you, your perfectly good boat.",
+      "choices": [
+        { "label": "Take the left path", "to": "castle_gate" },
+        { "label": "Take the right path", "to": "cliff" },
+        { "label": "Go back to the boat", "to": "end_sensible" }
+      ]
+    },
+    "end_sensible": {
+      "text": "You decide treasure hunting on an island named after a pirate novel is a liability nightmare. You sail home, max out your retirement contributions, and live a long, quiet, deeply responsible life.\n\nSomewhere, a narrator sighs.",
+      "ending": { "id": "sensible", "title": "The Sensible One", "kind": "strange" }
+    },
+
+    "cliff": {
+      "text": "The path ends at a cliff. A rusty zipline stretches down to a small island in a lake far below. A rickety ladder runs down the cliff face to the water's edge.",
+      "choices": [
+        { "label": "Ride the zipline", "to": "end_zipline", "if": ["!rope"] },
+        { "label": "Lash yourself to the zipline with the rope, then ride it", "to": "zipline_rope", "if": ["rope"] },
+        { "label": "Climb down the ladder", "to": "lake" },
+        { "label": "Search around the cliff edge", "to": "cliff_search", "if": ["!rope"] },
+        { "label": "Head back to the fork", "to": "fork" }
+      ]
+    },
+    "cliff_search": {
+      "text": "Behind a bush you find a coil of sturdy rope and a laminated sign: ZIPLINE INSPECTED 1987.\n\nYou take the rope. You also take the hint.",
+      "set": ["rope"],
+      "choices": [{ "label": "Back to the zipline", "to": "cliff" }]
+    },
+    "end_zipline": {
+      "text": "Halfway down you hear a loud *crack*. The zipline, last inspected during the Reagan administration, gives up. You fall into the lake, where a crocodile who has been waiting a very long time for this exact moment eats you.",
+      "ending": { "id": "zipline", "title": "Snap Decision", "kind": "death" }
+    },
+    "zipline_rope": {
+      "text": "The line snaps halfway down, exactly as you expected. Your rope catches the cable stump and you swing like a pendulum of pure competence, landing on the island's beach with only minor dignity loss.",
+      "choices": [{ "label": "Brush yourself off", "to": "island" }]
+    },
+    "lake": {
+      "text": "At the bottom of the ladder the lake laps at your boots. The island is maybe a hundred yards out. Several logs float nearby.\n\nOne of the logs blinks.",
+      "choices": [
+        { "label": "Swim for it", "to": "end_swim" },
+        { "label": "Follow the shoreline", "to": "shoreline" },
+        { "label": "Climb back up", "to": "cliff" }
+      ]
+    },
+    "end_swim": {
+      "text": "The logs were crocodiles. You knew the logs were crocodiles. The logs knew you knew. Nobody is surprised by how this goes.",
+      "ending": { "id": "swim", "title": "Croc Buffet", "kind": "death" }
+    },
+    "shoreline": {
+      "text": "Around a bend you find an old rowboat with one oar and a hand-painted name on the side: S.S. PROBABLY FINE.",
+      "choices": [
+        { "label": "Row to the island", "to": "rowing" },
+        { "label": "Head back to the ladder", "to": "lake" }
+      ]
+    },
+    "rowing": {
+      "text": "Halfway across, the crocodiles notice. Three of them start circling. The S.S. Probably Fine has a slow leak. Of course it does.",
+      "choices": [
+        { "label": "Row like your life depends on it", "to": "island" },
+        { "label": "Smack the nearest crocodile with the oar", "to": "end_oar" }
+      ]
+    },
+    "end_oar": {
+      "text": "You bonk the crocodile on the nose. It's offended. Its friends are also offended. The S.S. Probably Fine turns out to be, ultimately, not.",
+      "ending": { "id": "oar", "title": "Bad Oar Day", "kind": "death" }
+    },
+
+    "island": {
+      "text": "The island is tiny: one palm tree, one hut, and one extremely old man in a hammock who has clearly not had a visitor in decades.\n\n\"Riddle,\" he croaks, before you can say anything. \"Answer it and I'll give you my map.\"",
+      "choices": [
+        { "label": "Hear the riddle", "to": "riddle" },
+        { "label": "Ignore him and climb the palm tree for coconuts", "to": "end_coconut" },
+        { "label": "Ignore him and look behind the hut", "to": "hut_back" }
+      ]
+    },
+    "riddle": {
+      "text": "\"What,\" he says, with enormous gravity, \"has keys, but can't open locks?\"",
+      "choices": [
+        { "label": "A piano", "to": "riddle_right" },
+        { "label": "A really bad locksmith", "to": "riddle_wrong" },
+        { "label": "The guy who keeps losing his car keys", "to": "riddle_wrong" }
+      ]
+    },
+    "riddle_right": {
+      "text": "He squints at you. \"Correct. Nobody ever gets that one.\"\n\nEverybody gets that one.\n\nHe hands you a yellowed map. A dotted line runs from the hut, under the lake, to a castle, ending at a big red X. In the margin: DON'T DRINK FROM THE CHALICE. NOT THE GOOD SPRITE.",
+      "set": ["map"],
+      "choices": [{ "label": "Thank him and look behind the hut", "to": "hut_back" }]
+    },
+    "riddle_wrong": {
+      "text": "\"Wrong,\" he says, and goes back to sleep. Deeply, unrecoverably asleep. You poke him. He snores louder. The map is clearly not happening.",
+      "choices": [
+        { "label": "Look behind the hut", "to": "hut_back" },
+        { "label": "Climb the palm tree for coconuts", "to": "end_coconut" }
+      ]
+    },
+    "end_coconut": {
+      "text": "You climb thirty feet up a palm tree with no plan for coming down. You do eventually come down. All at once.",
+      "ending": { "id": "coconut", "title": "Gravity Check", "kind": "death" }
+    },
+    "hut_back": {
+      "text": "Behind the hut, under a pile of old fishing nets, is a trapdoor. Below it, a damp tunnel heads under the lake toward the castle.",
+      "choices": [{ "label": "Go through the tunnel", "to": "tunnel" }]
+    },
+    "tunnel": {
+      "text": "The tunnel is long, dark, and smells like a gym bag left in a hot car. It ends at a ladder. You climb, push up a heavy flagstone, and haul yourself into...",
+      "choices": [{ "label": "...wherever this is", "to": "treasure_room" }]
+    },
+
+    "castle_gate": {
+      "text": "You arrive at a mysterious castle. In the courtyard are three doors: one red, one yellow, and one gold.",
+      "choices": [
+        { "label": "Open the red door", "to": "end_red" },
+        { "label": "Open the yellow door", "to": "yellow_room", "if": ["!gary"] },
+        { "label": "Visit Gary", "to": "yellow_again", "if": ["gary"] },
+        { "label": "Open the gold door", "to": "hallways" },
+        { "label": "Head back to the fork", "to": "fork" }
+      ]
+    },
+    "end_red": {
+      "text": "You open the red door and immediately fall into a pit of small, slithery, extremely enthusiastic snakes. So sorry. You died.",
+      "ending": { "id": "snakes", "title": "Snake Pit", "kind": "death" }
+    },
+    "yellow_room": {
+      "text": "A dim room. A hunched figure in the corner turns around: a four-foot-eleven man in a stained bathrobe, eating a raw onion like an apple.\n\n\"I'm Gary. Night manager. You're gonna settle something for me.\" He leans in. \"Is a hot dog a sandwich?\"",
+      "choices": [
+        { "label": "\"Yes.\"", "to": "end_gary" },
+        { "label": "\"No.\"", "to": "gary_friend" },
+        { "label": "Back out slowly", "to": "castle_gate" }
+      ]
+    },
+    "end_gary": {
+      "text": "\"WRONG,\" Gary screams, and beats you to death with a rolled-up newspaper from 1994. It takes a very long time. Neither of you enjoys it.",
+      "ending": { "id": "gary-wrong", "title": "Wrong Answer", "kind": "death" }
+    },
+    "gary_friend": {
+      "text": "\"FINALLY,\" Gary says, wiping away a tear. \"Somebody with sense.\"\n\nHe gives you a firm handshake and a business card that just says GARY. \"You ever get in trouble in this castle, I got your back.\"",
+      "set": ["gary"],
+      "choices": [{ "label": "Back to the courtyard", "to": "castle_gate" }]
+    },
+    "yellow_again": {
+      "text": "Gary salutes you with the onion. \"Go get 'em, champ.\"",
+      "choices": [{ "label": "Back to the courtyard", "to": "castle_gate" }]
+    },
+    "hallways": {
+      "text": "Behind the gold door the hallway splits: one passage goes forward, one to the left.",
+      "choices": [
+        { "label": "Go forward", "to": "chalice" },
+        { "label": "Go left", "to": "scratching_door" }
+      ]
+    },
+    "scratching_door": {
+      "text": "You find a door. From the other side: scratching, grunting, and what sounds like a man delivering an extremely intense monologue to an audience of no one.",
+      "choices": [
+        { "label": "Enter", "to": "end_bear" },
+        { "label": "Turn around", "to": "turn_around" }
+      ]
+    },
+    "end_bear": {
+      "text": "In a wrestling ring, a man with alarming hair and a leather jacket is grappling with a grizzly bear. He locks eyes with you, whispers something in what might be Latin, and the bear immediately switches opponents.\n\nYou are mauled. He takes a bow.",
+      "ending": { "id": "bear", "title": "Main Event", "kind": "death" }
+    },
+    "turn_around": {
+      "text": "You back away. Through the door a voice bellows: \"COWARD!\" Then, more quietly: \"Honestly, good call.\"\n\nYou head the other way.",
+      "choices": [{ "label": "Keep going", "to": "chalice" }]
+    },
+    "chalice": {
+      "text": "You enter a small room. On a pedestal sits a gold chalice full of a fizzing, ice-cold liquid. Condensation beads on the rim. It looks incredibly refreshing.",
+      "choices": [
+        { "label": "Drink it", "to": "end_chalice", "if": ["!gary"] },
+        { "label": "Drink it", "to": "gary_rescue", "if": ["gary"] },
+        { "label": "Don't drink it", "to": "are_you_sure" }
+      ]
+    },
+    "end_chalice": {
+      "text": "Did no one ever tell you not to drink strange liquids you find in castles? Come on. You get dizzy. Your legs stop working. A short man in a bathrobe finds you, shakes his head, and feeds you to a pack of chihuahuas.\n\nIt's a lot of chihuahuas.",
+      "ending": { "id": "chalice", "title": "Chihuahua Chow", "kind": "death" }
+    },
+    "gary_rescue": {
+      "text": "You get dizzy and collapse. When you wake up, Gary is fanning you with a newspaper. \"Told you I had your back.\"\n\nYou never find the treasure. But Gary teaches you cribbage, you move into the yellow room, and it's honestly a pretty good life.",
+      "ending": { "id": "gary-rescue", "title": "Gary's Got Your Back", "kind": "strange" }
+    },
+    "are_you_sure": {
+      "text": "ARE YOU SURE?! It looks SO refreshing. It might be the good gas-station Sprite. The one that burns a little.",
+      "choices": [
+        { "label": "Fine. Drink it.", "to": "end_peer" },
+        { "label": "No. I have willpower.", "to": "treasure_room" }
+      ]
+    },
+    "end_peer": {
+      "text": "It was not the good gas-station Sprite. You have made a terrible mistake. You lose consciousness and never wake up. Honestly, your fault for caving to peer pressure from a narrator.",
+      "ending": { "id": "peer-pressure", "title": "Peer Pressure", "kind": "death" }
+    },
+
+    "treasure_room": {
+      "text": "A vaulted chamber. On a velvet pillow, under a single dramatic spotlight, is the treasure:\n\nThe keys to a 1990 Honda Civic, and a coupon for a free 20-piece chicken nugget meal. Expired.",
+      "choices": [
+        { "label": "Take the keys and leave", "to": "end_civic" },
+        { "label": "Line up the map and find the X", "to": "end_true", "if": ["map"] },
+        { "label": "Pry up the suspiciously loose floor tile", "to": "end_tile", "if": ["!map"] }
+      ]
+    },
+    "end_civic": {
+      "text": "Congrats. You win. I think?\n\nThe Civic has 340,000 miles on it and a tape deck permanently stuck on one song. You drive it home anyway. Legend.",
+      "ending": { "id": "civic", "title": "Civic Duty", "kind": "victory" }
+    },
+    "end_true": {
+      "text": "You count flagstones from the pedestal and pry up the one under the X. Beneath it: a chest of gold doubloons, a jeweled cutlass, and a note.\n\n\"The Civic was a decoy. -- Mgmt.\"\n\nYou are rich. You take the Civic anyway.",
+      "ending": { "id": "true-treasure", "title": "The Actual Treasure", "kind": "victory" }
+    },
+    "end_tile": {
+      "text": "The tile was loose because it's a trap. Obviously. The floor opens beneath you, and the last thing you see is the nugget coupon fluttering down after you like a tiny, greasy angel.",
+      "ending": { "id": "tile", "title": "Tile Fail", "kind": "death" }
+    }
+  }
+}

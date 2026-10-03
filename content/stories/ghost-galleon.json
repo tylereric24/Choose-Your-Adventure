@@ -1,0 +1,139 @@
+{
+  "id": "ghost-galleon",
+  "title": "Curse of the Ghost Galleon",
+  "tagline": "The sequel. The coupon was cursed.",
+  "description": "Three weeks after Treasure Island, a ghost ship materializes in a car dealership parking lot, and its skeleton captain wants something you have. Explore the ship, earn the crew's trust, and break a curse two decades in the making.",
+  "premium": true,
+  "order": 2,
+  "accent": "#7fb7c9",
+  "start": "lot",
+  "nodes": {
+    "lot": {
+      "text": "Three weeks after the Treasure Island incident, you're at a used car lot trying to sell the Civic. The dealer has offered you $200 and a handshake.\n\nThen the fog rolls in. A rotting galleon slides out of it and parks across four spaces. A translucent pirate leans over the rail.\n\n\"Ye carry the Captain's coupon,\" he moans. \"Come aboard, or be cursed forever.\"",
+      "choices": [
+        { "label": "Climb aboard", "to": "deck" },
+        { "label": "Offer to sell him the coupon for $40", "to": "end_haggle" },
+        { "label": "Jump in the Civic and drive", "to": "civic_chase" }
+      ]
+    },
+    "end_haggle": {
+      "text": "He pays in cursed doubloons. They're worth a fortune, technically, but every time you spend one you hear a sea shanty for the rest of the day. At full volume. Forever.\n\nYou're rich. You're just never not hearing \"Drunken Sailor.\"",
+      "ending": { "id": "haggle", "title": "Coupon Capitalist", "kind": "strange" }
+    },
+    "civic_chase": {
+      "text": "The Civic coughs to life. In the mirror, the galleon lifts off the asphalt and follows you up the on-ramp, sailing on a river of fog.",
+      "choices": [
+        { "label": "Floor it", "to": "end_civic_chase" },
+        { "label": "Swerve into a fast-food drive-thru", "to": "drive_thru" }
+      ]
+    },
+    "end_civic_chase": {
+      "text": "The Civic's top speed is 58 miles per hour, downhill, with a tailwind. The galleon's top speed is \"ghost.\" The galleon also has cannons.",
+      "ending": { "id": "civic-chase", "title": "Top Speed 58", "kind": "death" }
+    },
+    "drive_thru": {
+      "text": "The galleon screeches to a halt at the curb. There's a sign on the window: NO SHIRT, NO SHOES, NO SERVICE. Ghosts have neither. They can't follow you in.\n\nThe speaker crackles. \"Welcome, can I take your order?\"",
+      "choices": [
+        { "label": "Redeem the expired nugget coupon", "to": "end_nuggets" },
+        { "label": "Order a coffee, then go back and face them", "to": "deck" }
+      ]
+    },
+    "end_nuggets": {
+      "text": "The cashier looks at the coupon, looks at the ghost ship idling at the curb, and honors it without a word.\n\nYou eat twenty nuggets. They're excellent. Then the fog wraps around you and the curse transfers. You are now the ghost captain. The benefits are terrible, but the hat is incredible.",
+      "ending": { "id": "nuggets", "title": "Under New Management", "kind": "strange" }
+    },
+
+    "deck": {
+      "text": "The deck is crowded with translucent pirates, all of whom look extremely tired. A parrot skeleton on the mainmast clacks its beak at you.\n\nThe first mate points with a bony finger: the captain's cabin aft, the galley below, the crow's nest above.",
+      "choices": [
+        { "label": "Go to the captain's cabin", "to": "cabin" },
+        { "label": "Go down to the galley", "to": "galley" },
+        { "label": "Climb to the crow's nest", "to": "crows_nest" }
+      ]
+    },
+    "galley": {
+      "text": "The ghost cook is stirring a pot of soup made of nothing. Steam that isn't there rises from it. \"Taste it,\" he insists. \"Nobody ever tastes it.\"\n\nOn the wall hangs a lantern burning with a cold blue flame.",
+      "choices": [
+        { "label": "Taste the soup", "to": "end_soup" },
+        { "label": "Grab the blue lantern while he isn't looking", "to": "galley_lantern", "if": ["!lantern"] },
+        { "label": "Head back up", "to": "deck" }
+      ]
+    },
+    "end_soup": {
+      "text": "It tastes like regret and a little bit of nutmeg. You feel lighter. Much lighter. You look down and can see the floor through your own feet.\n\nThe cook beams. \"Finally. Help in the kitchen.\"",
+      "ending": { "id": "soup", "title": "Soup of the Damned", "kind": "death" }
+    },
+    "galley_lantern": {
+      "text": "You pocket the lantern. Its blue flame doesn't flicker, doesn't burn, and lights up the fog around it like a searchlight. The cook doesn't notice. He's crying softly into the soup.",
+      "set": ["lantern"],
+      "choices": [{ "label": "Head back up", "to": "deck" }]
+    },
+    "crows_nest": {
+      "text": "From the crow's nest you can see the whole city: the car lot, the interstate, and, out on the bay, a second ghost ship. Bigger. Darker. Heading straight for you.\n\nThere's a brass warning bell beside you.",
+      "choices": [
+        { "label": "Ring the warning bell", "to": "ring_bell", "if": ["!warned"] },
+        { "label": "Jump to the deck to save time", "to": "end_jump" },
+        { "label": "Climb down", "to": "deck" }
+      ]
+    },
+    "ring_bell": {
+      "text": "CLANG CLANG CLANG. The crew scrambles to the cannons. The first mate looks up at you and gives a slow, approving nod. The parrot skeleton clacks twice, which you choose to interpret as respect.",
+      "set": ["warned"],
+      "choices": [{ "label": "Climb down", "to": "deck" }]
+    },
+    "end_jump": {
+      "text": "It saves time. It costs everything else.",
+      "ending": { "id": "jump", "title": "Shortcut", "kind": "death" }
+    },
+
+    "cabin": {
+      "text": "The captain is a skeleton in a magnificent feathered hat, slumped over a table covered in maps of fast-food locations.\n\n\"The coupon,\" he rasps. \"Twenty pieces. It was to be my last meal, before the curse. Give it to me.\"",
+      "choices": [
+        { "label": "Hand over the coupon", "to": "coupon_twist" },
+        { "label": "Ask why it's expired", "to": "captain_lore" },
+        { "label": "Refuse", "to": "end_plank" }
+      ]
+    },
+    "captain_lore": {
+      "text": "\"Coupons from the Golden Age of Nuggets never truly expire,\" he says darkly. \"They merely become... legally contested.\"\n\nHe taps a map. A drive-thru, two miles away, circled in blood. Or ketchup.",
+      "choices": [
+        { "label": "Hand over the coupon", "to": "coupon_twist" },
+        { "label": "Refuse", "to": "end_plank" }
+      ]
+    },
+    "end_plank": {
+      "text": "\"Then ye walk the plank,\" he says. You point out that you're in a parking lot. He points out that it's a very tall ship.",
+      "ending": { "id": "plank", "title": "Walk the Plank", "kind": "death" }
+    },
+    "coupon_twist": {
+      "text": "He reads the coupon, and his jaw falls off. He puts it back on. \"Must be redeemed... at a participating location.\"\n\nBefore you can respond, the ship lurches. Out in the fog, cannons boom. The second ghost ship is here.",
+      "choices": [
+        { "label": "Run on deck", "to": "battle", "if": ["warned"] },
+        { "label": "Run on deck", "to": "end_rammed", "if": ["!warned"] }
+      ]
+    },
+    "end_rammed": {
+      "text": "Nobody saw it coming, because nobody was in the crow's nest. The enemy ship rams you broadside. The galleon splits in half, and so, regrettably, do you.",
+      "ending": { "id": "rammed", "title": "Should've Looked Up", "kind": "death" }
+    },
+    "battle": {
+      "text": "Thanks to your warning, the crew is already at the cannons. The enemy ship is crewed entirely by ghostly tax auditors, and they're hiding in the fog.",
+      "choices": [
+        { "label": "Fire the cannons blindly into the fog", "to": "end_fog", "if": ["!lantern"] },
+        { "label": "Hold the blue lantern high", "to": "battle_win", "if": ["lantern"] }
+      ]
+    },
+    "end_fog": {
+      "text": "You fire into the fog. They fire back. The difference is they can see in fog, being ghosts, and you can't, being lunch.",
+      "ending": { "id": "fog", "title": "Lost in the Fog", "kind": "death" }
+    },
+    "battle_win": {
+      "text": "The cold blue light cuts through the fog like a searchlight. The auditors shriek, exposed, and scatter like receipts in the wind.\n\nThe captain grins. He's a skull, so he's always grinning, but this time he means it. \"To the drive-thru!\"",
+      "choices": [{ "label": "Set a course for the drive-thru", "to": "end_curse_lifted" }]
+    },
+    "end_curse_lifted": {
+      "text": "The galleon does not fit in the drive-thru lane. It is now a former drive-thru lane.\n\nThe cashier, shaking, honors the coupon. The captain eats all twenty pieces, sheds a single ectoplasmic tear, and fades into peace. The crew follows, one by one, waving.\n\nThey leave you the ship. Parking is going to be a problem.",
+      "ending": { "id": "curse-lifted", "title": "Curse Lifted", "kind": "victory" }
+    }
+  }
+}
