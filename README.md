@@ -6,6 +6,7 @@ Installable web app (PWA), zero runtime dependencies, Node 20+.
 - **Free story:** *Treasure Island*, 5 chapters, 93 scenes, 22 endings, ~4,300 words. The original Python game rebuilt and expanded.
 - **Paid story:** *Curse of the Ghost Galleon*, 6 chapters, 83 scenes, 19 endings, ~5,200 words. The sequel, upsold from every Treasure Island ending.
 - **Retention loop:** items that change later scenes, chapter checkpoints, endings gallery (undiscovered endings show only their type), undo, saved runs, "X% of players chose this" stats, share button.
+- **Monetization:** one-time Stripe Checkout purchases per story, plus an all-access pass. No accounts, no ads.
 
 | | Treasure Island | Ghost Galleon |
 |---|---|---|
@@ -15,7 +16,6 @@ Installable web app (PWA), zero runtime dependencies, Node 20+.
 | Hardest ending | 37 decisions | 26 decisions |
 
 Run lengths come from 20,000 simulated random-choice players (`npm run stats`), a pessimistic floor; real players who follow the hints go deeper.
-- **Monetization:** one-time Stripe Checkout purchases per story, plus an all-access pass. No accounts, no ads.
 
 ## Run it
 
