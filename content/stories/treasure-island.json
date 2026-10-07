@@ -2,226 +2,1312 @@
   "id": "treasure-island",
   "title": "Treasure Island",
   "tagline": "Find the treasure. Try not to get eaten.",
-  "description": "A fork in the road, a castle with suspicious doors, a lake full of very patient crocodiles, and a treasure that is exactly as valuable as you deserve.",
+  "description": "Six chapters of terrible decisions: a fork in the road, a castle full of suspicious doors, a lake of very patient crocodiles, a hermit with one riddle, a troll with a lanyard, and a treasure that is exactly as valuable as you deserve.",
   "premium": false,
   "order": 1,
   "accent": "#e0a93b",
   "sequel": "ghost-galleon",
   "art": "*******************************************************************************\n          |                   |                  |                     |\n _________|________________.=\"\"_;=.______________|_____________________|_______\n|                   |  ,-\"_,=\"\"     `\"=.|                  |\n|___________________|__\"=._o`\"-._        `\"=.______________|___________________\n          |                `\"=._o`\"=._      _`\"=._                     |\n _________|_____________________:=._o \"=._.\"_.-=\"'\"=.__________________|_______\n|                   |    __.--\" , ; `\"=._o.\" ,-\"\"\"-._ \".   |\n|___________________|_._\"  ,. .` ` `` ,  `\"-._\"-._   \". '__|___________________\n          |           |o`\"=._` , \"` `; .\". ,  \"-._\"-._; ;              |\n _________|___________| ;`-.o`\"=._; .\" ` '`.\"\\` . \"-._ /_______________|_______\n|                   | |o;    `\"-.o`\"=._``  '` \" ,__.--o;   |\n|___________________|_| ;     (#) `-.o `\"=.`_.--\"_o.-; ;___|___________________\n____/______/______/___|o;._    \"      `\".o|o_.--\"    ;o;____/______/______/____\n/______/______/______/_\"=._o--._        ; | ;        ; ;/______/______/______/_\n____/______/______/______/__\"=._o--._   ;o|o;     _._;o;____/______/______/____\n/______/______/______/______/____\"=._o._; | ;_.--\"o.--\"_/______/______/______/_\n____/______/______/______/______/_____\"=.o|o_.--\"\"___/______/______/______/____\n/______/______/______/______/______/______/______/______/______/______/_____ /\n*******************************************************************************",
-  "start": "fork",
+  "items": {
+    "sandwich": "Soggy sandwich",
+    "shovel": "Rusty shovel",
+    "coin": "Gold doubloon",
+    "rope": "Rope",
+    "map": "Hermit’s map",
+    "glow": "Glowing mushroom",
+    "torch": "Torch",
+    "gary": "Gary’s business card",
+    "bear": "Bear (friend)",
+    "gold": "Chest of doubloons"
+  },
+  "start": "arrival",
   "nodes": {
-    "fork": {
-      "text": "Welcome to Treasure Island. Your mission is to find the treasure.\n\nYou arrive at a fork in the road. To the left, the spires of a crooked castle. To the right, the sound of rushing water. Behind you, your perfectly good boat.",
+    "arrival": {
+      "chapter": "Chapter 1 · The Beach",
+      "text": "Welcome to Treasure Island. Your mission is to find the treasure.\n\nThe ferry scrapes onto the sand. Its captain, a sunburned man named Rudy who charged you forty dollars for a “one-way experience,” tosses your bag onto the beach and then, after some visible internal struggle, a soggy sandwich wrapped in newspaper.\n\n“For emergencies,” he says. “Ferry back’s whenever I feel like it. Good luck. Most people don’t need it, on account of the crocodiles.”",
+      "set": [
+        "sandwich"
+      ],
       "choices": [
-        { "label": "Take the left path", "to": "castle_gate" },
-        { "label": "Take the right path", "to": "cliff" },
-        { "label": "Go back to the boat", "to": "end_sensible" }
+        {
+          "label": "Look around the beach",
+          "to": "landing"
+        }
+      ]
+    },
+    "landing": {
+      "text": "The landing is a crescent of white sand. Rudy’s ferry bobs in the shallows while he reads a magazine called Ferry Monthly. A big wooden sign stands at the treeline beside a dirt path heading inland. Down the beach, seagulls are screaming at each other over something.",
+      "choices": [
+        {
+          "label": "Read the sign",
+          "to": "sign"
+        },
+        {
+          "label": "Walk down the beach",
+          "to": "beach"
+        },
+        {
+          "label": "Take the path inland",
+          "to": "fork"
+        },
+        {
+          "label": "Ask Rudy for a ride back",
+          "to": "rudy_back"
+        }
+      ]
+    },
+    "sign": {
+      "text": "WELCOME TO TREASURE ISLAND\n\n1. NO LIFEGUARD ON DUTY. NO LIFEGUARD HAS EVER BEEN ON DUTY.\n2. DO NOT FEED THE CROCODILES. THEY ARE ON A DIET. THEY WILL FEED THEMSELVES.\n3. RED DOORS ARE FOR EMPLOYEES ONLY.\n4. THE MANAGEMENT IS NOT RESPONSIBLE FOR DEATH, DISMEMBERMENT, OR BEARS.\n\nSomeone has scratched underneath: THE CHALICE IS A LIE.",
+      "choices": [
+        {
+          "label": "Back to the landing",
+          "to": "landing"
+        }
+      ]
+    },
+    "rudy_back": {
+      "text": "Rudy lowers his magazine. “Ride back’s four hundred.”\n\n“It was forty to get here.”\n\n“Supply and demand,” Rudy says. “Lot of demand for leaving. Real low supply of me caring.”",
+      "choices": [
+        {
+          "label": "Pay the four hundred dollars",
+          "to": "end_sensible"
+        },
+        {
+          "label": "Never mind. There’s treasure to find.",
+          "to": "landing"
+        }
       ]
     },
     "end_sensible": {
-      "text": "You decide treasure hunting on an island named after a pirate novel is a liability nightmare. You sail home, max out your retirement contributions, and live a long, quiet, deeply responsible life.\n\nSomewhere, a narrator sighs.",
-      "ending": { "id": "sensible", "title": "The Sensible One", "kind": "strange" }
+      "text": "You pay Rudy four hundred dollars to take you back across the bay, which is the most expensive way anyone has ever been safe.\n\nYou go home, max out your retirement contributions, and live a long, quiet, deeply responsible life. Somewhere, a narrator sighs.",
+      "ending": {
+        "id": "sensible",
+        "title": "The Sensible One",
+        "kind": "strange"
+      }
     },
-
-    "cliff": {
-      "text": "The path ends at a cliff. A rusty zipline stretches down to a small island in a lake far below. A rickety ladder runs down the cliff face to the water's edge.",
+    "beach": {
+      "text": "Down the beach, a dozen seagulls are fighting over something half-buried in the sand. A green bottle rolls in the surf with a note inside. And on a rock, glaring at you, is a hermit crab wearing a bottle cap as a helmet and holding a toothpick like a sword.\n\nIt has clearly been waiting for a worthy opponent. It has decided that’s you.",
       "choices": [
-        { "label": "Ride the zipline", "to": "end_zipline", "if": ["!rope"] },
-        { "label": "Lash yourself to the zipline with the rope, then ride it", "to": "zipline_rope", "if": ["rope"] },
-        { "label": "Climb down the ladder", "to": "lake" },
-        { "label": "Search around the cliff edge", "to": "cliff_search", "if": ["!rope"] },
-        { "label": "Head back to the fork", "to": "fork" }
+        {
+          "label": "Scare off the seagulls",
+          "to": "gulls",
+          "if": [
+            "!shovel"
+          ]
+        },
+        {
+          "label": "Fish the bottle out of the surf",
+          "to": "bottle"
+        },
+        {
+          "label": "Accept the crab’s challenge",
+          "to": "crab",
+          "if": [
+            "!coin"
+          ]
+        },
+        {
+          "label": "Head back to the landing",
+          "to": "landing"
+        }
+      ]
+    },
+    "gulls": {
+      "text": "You run at the seagulls flapping your arms and making a noise you didn’t know you could make. They scatter, deeply offended, and one of them leaves something on your shoulder as a review.\n\nThey were fighting over a rusty shovel with PROPERTY OF MGMT burned into the handle. You take it. Management can bill you.",
+      "set": [
+        "shovel"
+      ],
+      "choices": [
+        {
+          "label": "Back down the beach",
+          "to": "beach"
+        }
+      ]
+    },
+    "bottle": {
+      "text": "The note inside is written in shaky pencil:\n\n“To whoever finds this: the man in the yellow room will ask you a question. A hot dog is NOT a sandwich. Say it with your chest. He respects conviction.\n\nAlso, if you get the chance, be nice to the bear. — Previous Guy”\n\nThe note doesn’t say what happened to Previous Guy. You put it back in the bottle and decide not to think about that.",
+      "choices": [
+        {
+          "label": "Back down the beach",
+          "to": "beach"
+        }
+      ]
+    },
+    "crab": {
+      "text": "You crouch. The crab raises its toothpick. Somewhere, a seagull hums a tense western whistle.\n\nThe crab lunges. It is surprisingly fast and extremely committed.",
+      "choices": [
+        {
+          "label": "Dodge and flick its helmet off",
+          "to": "crab_win"
+        },
+        {
+          "label": "Let it win, out of respect",
+          "to": "crab_respect"
+        }
+      ]
+    },
+    "crab_win": {
+      "text": "You sidestep and flick the bottle cap off its head. The crab freezes, humiliated, then slowly backs into its shell and pushes out a single gold doubloon, like tribute. Or a bribe to never speak of this.\n\nYou pocket the doubloon. You will never speak of this.",
+      "set": [
+        "coin"
+      ],
+      "choices": [
+        {
+          "label": "Back down the beach",
+          "to": "beach"
+        }
+      ]
+    },
+    "crab_respect": {
+      "text": "You fall dramatically onto the sand and clutch your chest. The crab stands over you, triumphant, for a long moment. Then, moved by the theater of it all, it pushes a gold doubloon toward you with one claw.\n\nA gift between warriors. You pocket it.",
+      "set": [
+        "coin"
+      ],
+      "choices": [
+        {
+          "label": "Back down the beach",
+          "to": "beach"
+        }
+      ]
+    },
+    "fork": {
+      "chapter": "Chapter 2 · The Crossroads",
+      "text": "The path climbs through palm trees and ends at a fork. A wooden signpost has two arms.\n\nThe left one says CASTLE, with a little drawing of a castle and, for some reason, a frowny face. The right one says CLIFFS, with a little drawing of a crocodile wearing a napkin.\n\nBehind you, the beach.",
+      "choices": [
+        {
+          "label": "Take the left path, to the castle",
+          "to": "toll_bridge"
+        },
+        {
+          "label": "Take the right path, to the cliffs",
+          "to": "cliff"
+        },
+        {
+          "label": "Go back to the beach",
+          "to": "landing"
+        }
+      ]
+    },
+    "cliff": {
+      "chapter": "Chapter 3 · The Lake",
+      "text": "The path ends at a cliff. A rusty zipline stretches down to a small island in a lake far below. A rickety ladder runs down the cliff face to the water’s edge.\n\nThe zipline creaks in the wind. It sounds like it’s asking you not to.",
+      "choices": [
+        {
+          "label": "Ride the zipline",
+          "to": "end_zipline",
+          "if": [
+            "!rope"
+          ]
+        },
+        {
+          "label": "Lash yourself to the zipline with the rope, then ride it",
+          "to": "zipline_rope",
+          "if": [
+            "rope"
+          ]
+        },
+        {
+          "label": "Climb down the ladder",
+          "to": "lake"
+        },
+        {
+          "label": "Search around the cliff edge",
+          "to": "cliff_search",
+          "if": [
+            "!rope"
+          ]
+        },
+        {
+          "label": "Head back to the fork",
+          "to": "fork"
+        }
       ]
     },
     "cliff_search": {
       "text": "Behind a bush you find a coil of sturdy rope and a laminated sign: ZIPLINE INSPECTED 1987.\n\nYou take the rope. You also take the hint.",
-      "set": ["rope"],
-      "choices": [{ "label": "Back to the zipline", "to": "cliff" }]
+      "set": [
+        "rope"
+      ],
+      "choices": [
+        {
+          "label": "Back to the zipline",
+          "to": "cliff"
+        }
+      ]
     },
     "end_zipline": {
       "text": "Halfway down you hear a loud *crack*. The zipline, last inspected during the Reagan administration, gives up. You fall into the lake, where a crocodile who has been waiting a very long time for this exact moment eats you.",
-      "ending": { "id": "zipline", "title": "Snap Decision", "kind": "death" }
+      "ending": {
+        "id": "zipline",
+        "title": "Snap Decision",
+        "kind": "death"
+      }
     },
     "zipline_rope": {
-      "text": "The line snaps halfway down, exactly as you expected. Your rope catches the cable stump and you swing like a pendulum of pure competence, landing on the island's beach with only minor dignity loss.",
-      "choices": [{ "label": "Brush yourself off", "to": "island" }]
+      "text": "The line snaps halfway down, exactly as you expected. Your rope catches the cable stump and you swing like a pendulum of pure competence, landing on the island’s beach with only minor dignity loss.",
+      "choices": [
+        {
+          "label": "Brush yourself off",
+          "to": "island"
+        }
+      ]
     },
     "lake": {
-      "text": "At the bottom of the ladder the lake laps at your boots. The island is maybe a hundred yards out. Several logs float nearby.\n\nOne of the logs blinks.",
+      "text": "At the bottom of the ladder the lake laps at your boots. The island is maybe a hundred yards out. Several logs float nearby.\n\nOne of the logs blinks. Another one licks its lips. Logs don’t have lips.",
       "choices": [
-        { "label": "Swim for it", "to": "end_swim" },
-        { "label": "Follow the shoreline", "to": "shoreline" },
-        { "label": "Climb back up", "to": "cliff" }
+        {
+          "label": "Swim for it",
+          "to": "end_swim",
+          "if": [
+            "!sandwich"
+          ]
+        },
+        {
+          "label": "Swim for it",
+          "to": "lake_risky",
+          "if": [
+            "sandwich"
+          ]
+        },
+        {
+          "label": "Follow the shoreline",
+          "to": "shoreline"
+        },
+        {
+          "label": "Climb back up",
+          "to": "cliff"
+        }
+      ]
+    },
+    "lake_risky": {
+      "text": "You wade in. Every log in the lake turns toward you at once, which is not something logs do.\n\nYour hand closes on the soggy sandwich in your pocket.",
+      "choices": [
+        {
+          "label": "Throw the sandwich as far as you can and swim the other way",
+          "to": "lake_sandwich"
+        },
+        {
+          "label": "Keep the sandwich. Swim faster.",
+          "to": "end_swim"
+        }
+      ]
+    },
+    "lake_sandwich": {
+      "text": "The sandwich arcs through the air and lands with a wet slap. The crocodiles forget you exist. There is a brief, horrible frenzy over half a sandwich of unknown meat.\n\nYou reach the island gasping and very aware that “Do not feed the crocodiles” was a rule you just broke to survive.",
+      "set": [
+        "!sandwich"
+      ],
+      "choices": [
+        {
+          "label": "Crawl up the beach",
+          "to": "island"
+        }
       ]
     },
     "end_swim": {
       "text": "The logs were crocodiles. You knew the logs were crocodiles. The logs knew you knew. Nobody is surprised by how this goes.",
-      "ending": { "id": "swim", "title": "Croc Buffet", "kind": "death" }
+      "ending": {
+        "id": "swim",
+        "title": "Croc Buffet",
+        "kind": "death"
+      }
     },
     "shoreline": {
-      "text": "Around a bend you find an old rowboat with one oar and a hand-painted name on the side: S.S. PROBABLY FINE.",
+      "text": "Around a bend you find an old rowboat with one oar and a hand-painted name on the side: S.S. PROBABLY FINE.\n\nThere’s about an inch of water in the bottom. You decide that’s probably fine.",
       "choices": [
-        { "label": "Row to the island", "to": "rowing" },
-        { "label": "Head back to the ladder", "to": "lake" }
+        {
+          "label": "Row to the island",
+          "to": "rowing"
+        },
+        {
+          "label": "Head back to the ladder",
+          "to": "lake"
+        }
       ]
     },
     "rowing": {
-      "text": "Halfway across, the crocodiles notice. Three of them start circling. The S.S. Probably Fine has a slow leak. Of course it does.",
+      "text": "Halfway across, the crocodiles notice. Three of them start circling. The S.S. Probably Fine has a slow leak, and the inch of water is now two inches. Of course it is.",
       "choices": [
-        { "label": "Row like your life depends on it", "to": "island" },
-        { "label": "Smack the nearest crocodile with the oar", "to": "end_oar" }
+        {
+          "label": "Row like your life depends on it",
+          "to": "island"
+        },
+        {
+          "label": "Smack the nearest crocodile with the oar",
+          "to": "end_oar"
+        }
       ]
     },
     "end_oar": {
-      "text": "You bonk the crocodile on the nose. It's offended. Its friends are also offended. The S.S. Probably Fine turns out to be, ultimately, not.",
-      "ending": { "id": "oar", "title": "Bad Oar Day", "kind": "death" }
+      "text": "You bonk the crocodile on the nose. It’s offended. Its friends are also offended. The S.S. Probably Fine turns out to be, ultimately, not.",
+      "ending": {
+        "id": "oar",
+        "title": "Bad Oar Day",
+        "kind": "death"
+      }
     },
-
     "island": {
-      "text": "The island is tiny: one palm tree, one hut, and one extremely old man in a hammock who has clearly not had a visitor in decades.\n\n\"Riddle,\" he croaks, before you can say anything. \"Answer it and I'll give you my map.\"",
+      "text": "The island is tiny: one palm tree, one hut, and one extremely old man in a hammock who has clearly not had a visitor in decades. His beard has a bird’s nest in it. The bird looks annoyed to see you, too.\n\n“Riddle,” he croaks, before you can say anything. “Answer it and I’ll give you my map.”",
       "choices": [
-        { "label": "Hear the riddle", "to": "riddle" },
-        { "label": "Ignore him and climb the palm tree for coconuts", "to": "end_coconut" },
-        { "label": "Ignore him and look behind the hut", "to": "hut_back" }
+        {
+          "label": "Hear the riddle",
+          "to": "riddle",
+          "if": [
+            "!map"
+          ]
+        },
+        {
+          "label": "Climb the palm tree for coconuts",
+          "to": "end_coconut"
+        },
+        {
+          "label": "Look around behind the hut",
+          "to": "hut_back"
+        }
       ]
     },
     "riddle": {
-      "text": "\"What,\" he says, with enormous gravity, \"has keys, but can't open locks?\"",
+      "text": "He sits up, which takes a while. “What,” he says, with enormous gravity, “has keys, but can’t open locks?”",
       "choices": [
-        { "label": "A piano", "to": "riddle_right" },
-        { "label": "A really bad locksmith", "to": "riddle_wrong" },
-        { "label": "The guy who keeps losing his car keys", "to": "riddle_wrong" }
+        {
+          "label": "“A piano.”",
+          "to": "riddle_right"
+        },
+        {
+          "label": "“A really bad locksmith.”",
+          "to": "riddle_wrong"
+        },
+        {
+          "label": "“The guy who keeps losing his car keys.”",
+          "to": "riddle_wrong"
+        }
       ]
     },
     "riddle_right": {
-      "text": "He squints at you. \"Correct. Nobody ever gets that one.\"\n\nEverybody gets that one.\n\nHe hands you a yellowed map. A dotted line runs from the hut, under the lake, to a castle, ending at a big red X. In the margin: DON'T DRINK FROM THE CHALICE. NOT THE GOOD SPRITE.",
-      "set": ["map"],
-      "choices": [{ "label": "Thank him and look behind the hut", "to": "hut_back" }]
+      "text": "He squints at you. “Correct. Nobody ever gets that one.”\n\nEverybody gets that one.\n\nHe hands you a yellowed map. A dotted line runs from this hut, under the lake, to the castle, ending at a big red X in a room labeled VAULT. In the margin, in tiny letters: THE KEYS ARE A DECOY. COUNT FOUR STONES FROM THE PILLOW.",
+      "set": [
+        "map"
+      ],
+      "choices": [
+        {
+          "label": "Thank him",
+          "to": "island"
+        }
+      ]
     },
     "riddle_wrong": {
-      "text": "\"Wrong,\" he says, and goes back to sleep. Deeply, unrecoverably asleep. You poke him. He snores louder. The map is clearly not happening.",
+      "text": "“Wrong,” he says, and lies back down. In seconds he’s asleep. Deeply, unrecoverably asleep. The bird in his beard glares at you like this is your fault, which it is.\n\nThe door of his hut is hanging open.",
       "choices": [
-        { "label": "Look behind the hut", "to": "hut_back" },
-        { "label": "Climb the palm tree for coconuts", "to": "end_coconut" }
+        {
+          "label": "Sneak into the hut and look for the map",
+          "to": "hut_search"
+        },
+        {
+          "label": "Leave him be",
+          "to": "island_wrong"
+        }
+      ]
+    },
+    "hut_search": {
+      "text": "Inside the hut you find a cot, a dented kettle, and a rolled-up piece of paper tied with string. Jackpot.\n\nYou unroll it. It’s a grocery list. EGGS. MORE EGGS. BIRD SEED (FOR BEARD). The real map must be somewhere you can’t see, like on his person. You are not going to search his person.",
+      "choices": [
+        {
+          "label": "Leave quietly",
+          "to": "island_wrong"
+        }
+      ]
+    },
+    "island_wrong": {
+      "text": "The old man snores. The palm tree sways. Behind the hut, under a pile of fishing nets, something wooden pokes out of the sand.",
+      "choices": [
+        {
+          "label": "Climb the palm tree for coconuts",
+          "to": "end_coconut"
+        },
+        {
+          "label": "Look behind the hut",
+          "to": "hut_back"
+        }
       ]
     },
     "end_coconut": {
       "text": "You climb thirty feet up a palm tree with no plan for coming down. You do eventually come down. All at once.",
-      "ending": { "id": "coconut", "title": "Gravity Check", "kind": "death" }
+      "ending": {
+        "id": "coconut",
+        "title": "Gravity Check",
+        "kind": "death"
+      }
     },
     "hut_back": {
-      "text": "Behind the hut, under a pile of old fishing nets, is a trapdoor. Below it, a damp tunnel heads under the lake toward the castle.",
-      "choices": [{ "label": "Go through the tunnel", "to": "tunnel" }]
+      "text": "Behind the hut, under a pile of old fishing nets, is a trapdoor. Below it, a ladder drops into a damp tunnel heading under the lake toward the castle.\n\nCool air breathes out of it. It smells like old stone and, faintly, like chili.",
+      "choices": [
+        {
+          "label": "Climb down into the tunnel",
+          "to": "tunnel"
+        },
+        {
+          "label": "Go back around the hut",
+          "to": "island"
+        }
+      ]
     },
     "tunnel": {
-      "text": "The tunnel is long, dark, and smells like a gym bag left in a hot car. It ends at a ladder. You climb, push up a heavy flagstone, and haul yourself into...",
-      "choices": [{ "label": "...wherever this is", "to": "treasure_room" }]
-    },
-
-    "castle_gate": {
-      "text": "You arrive at a mysterious castle. In the courtyard are three doors: one red, one yellow, and one gold.",
+      "text": "The tunnel is long, dark, and smells like a gym bag left in a hot car. Water drips somewhere. Your footsteps echo back at you a little too slowly.\n\nAfter a few hundred yards it splits. Straight ahead, the passage is blocked by a cave-in of loose dirt and rubble. To the right, a narrower passage glows a faint, friendly green. Above you, a shaft of daylight falls from a round opening: the bottom of a well.",
       "choices": [
-        { "label": "Open the red door", "to": "end_red" },
-        { "label": "Open the yellow door", "to": "yellow_room", "if": ["!gary"] },
-        { "label": "Visit Gary", "to": "yellow_again", "if": ["gary"] },
-        { "label": "Open the gold door", "to": "hallways" },
-        { "label": "Head back to the fork", "to": "fork" }
+        {
+          "label": "Dig through the cave-in",
+          "to": "cave_in"
+        },
+        {
+          "label": "Follow the green glow",
+          "to": "grotto"
+        },
+        {
+          "label": "Climb up the well shaft",
+          "to": "well_climb",
+          "if": [
+            "rope"
+          ]
+        },
+        {
+          "label": "Back to the island",
+          "to": "hut_back"
+        }
+      ]
+    },
+    "cave_in": {
+      "text": "The cave-in is a wall of packed dirt and rubble. You can hear a draft on the other side, so it doesn’t go far. But digging through it with your bare hands would take until next Tuesday.",
+      "choices": [
+        {
+          "label": "Dig through with the shovel",
+          "to": "cellar",
+          "if": [
+            "shovel"
+          ]
+        },
+        {
+          "label": "Go back to the fork in the tunnel",
+          "to": "tunnel"
+        }
+      ]
+    },
+    "cellar": {
+      "text": "Twenty minutes of shoveling later, you break through into a cramped stone cellar stacked with wine racks. All the bottles are empty. Someone has written GARY on the wall in marker, then crossed it out and written NOT GARY, then crossed that out too.\n\nA narrow staircase leads up. At the top is a heavy iron door, slightly ajar, and beyond it: darkness.",
+      "choices": [
+        {
+          "label": "Go up to the iron door",
+          "to": "antechamber"
+        },
+        {
+          "label": "Back into the tunnel",
+          "to": "tunnel"
+        }
+      ]
+    },
+    "grotto": {
+      "text": "The narrow passage opens into a cavern full of glowing mushrooms, pale green and softly pulsing like they’re breathing. It’s beautiful. It is also humming. Quietly. In harmony.\n\nOn the far side, a set of stone steps leads up toward a wooden door. You smell chili.",
+      "choices": [
+        {
+          "label": "Eat one of the mushrooms",
+          "to": "end_mushroom"
+        },
+        {
+          "label": "Pocket a glowing mushroom for light",
+          "to": "grotto_pocket",
+          "if": [
+            "!glow"
+          ]
+        },
+        {
+          "label": "Climb the steps to the wooden door",
+          "to": "kitchen"
+        },
+        {
+          "label": "Go back to the tunnel",
+          "to": "tunnel"
+        }
+      ]
+    },
+    "grotto_pocket": {
+      "text": "You pluck one carefully. It stops humming, then starts again, a little lower, like it’s fine with this. It gives off enough light to read by.\n\nYou now have a mushroom flashlight. Science.",
+      "set": [
+        "glow"
+      ],
+      "choices": [
+        {
+          "label": "Look around the grotto",
+          "to": "grotto"
+        }
+      ]
+    },
+    "end_mushroom": {
+      "text": "It tastes like licorice and the color purple. The humming gets louder. You understand it now. It’s a song about the treasure, and the treasure is friendship, and the friendship is also a mushroom.\n\nThree days later, Rudy finds you on the beach, conducting the waves. You don’t want the treasure anymore. You want to start a band.",
+      "ending": {
+        "id": "mushroom",
+        "title": "Fungal Enlightenment",
+        "kind": "strange"
+      }
+    },
+    "kitchen": {
+      "text": "The wooden door opens into a castle kitchen. A pot of chili bubbles on an iron stove with nobody watching it. A crate in the corner is labeled ONIONS (GARY’S) — DO NOT TOUCH, with the DO NOT underlined four times.\n\nA servant’s passage leads off into the castle.",
+      "choices": [
+        {
+          "label": "Take the servant’s passage into the castle",
+          "to": "hallways"
+        },
+        {
+          "label": "Go back down to the grotto",
+          "to": "grotto"
+        }
+      ]
+    },
+    "well_climb": {
+      "text": "You tie the rope around a rock, give it a tug, and climb. It’s a long way. Your arms file a formal complaint halfway up.\n\nYou haul yourself over the lip of the well and tumble onto the cobblestones of a castle courtyard.",
+      "choices": [
+        {
+          "label": "Get up",
+          "to": "courtyard"
+        }
+      ]
+    },
+    "toll_bridge": {
+      "chapter": "Chapter 3 · The Castle",
+      "text": "The left path ends at a moat with a stone bridge, and on the bridge, in a folding chair, is a troll. He is large, mossy, and wearing a lanyard that says DOUG — TOLL OPERATIONS.\n\n“Toll’s one gold coin,” Doug says, without looking up from his crossword. “Or you can answer a riddle. Or you can swim the moat, but Kevin’s in the moat.”\n\nYou don’t ask who Kevin is.",
+      "choices": [
+        {
+          "label": "Pay the toll with your doubloon",
+          "to": "toll_paid",
+          "if": [
+            "coin"
+          ]
+        },
+        {
+          "label": "Answer the riddle",
+          "to": "troll_riddle"
+        },
+        {
+          "label": "Swim the moat",
+          "to": "moat"
+        },
+        {
+          "label": "Shove Doug off the bridge",
+          "to": "end_troll"
+        },
+        {
+          "label": "Head back to the fork",
+          "to": "fork"
+        }
+      ]
+    },
+    "toll_paid": {
+      "text": "Doug bites the doubloon, nods, and drops it into a fanny pack. “Pleasure doing business.” He goes back to his crossword. “Seven letters, ‘a bad decision.’ Starts with T.”\n\nYou suggest “treasure.” He looks at you for a long time.",
+      "set": [
+        "!coin"
+      ],
+      "choices": [
+        {
+          "label": "Cross the bridge",
+          "to": "courtyard"
+        }
+      ]
+    },
+    "troll_riddle": {
+      "text": "Doug sets down his crossword with great ceremony. “What gets wetter,” he says, “the more it dries?”",
+      "choices": [
+        {
+          "label": "“A towel.”",
+          "to": "troll_right"
+        },
+        {
+          "label": "“The moat.”",
+          "to": "troll_wrong"
+        },
+        {
+          "label": "“Kevin.”",
+          "to": "troll_wrong"
+        }
+      ]
+    },
+    "troll_right": {
+      "text": "“Huh,” Doug says. “Usually people say Kevin.” He waves you across. “Go on. Don’t open the red door. I don’t care what you do, I just don’t want to do the paperwork.”",
+      "choices": [
+        {
+          "label": "Cross the bridge",
+          "to": "courtyard"
+        }
+      ]
+    },
+    "troll_wrong": {
+      "text": "“Nope,” says Doug, and picks you up by the back of your shirt with one enormous hand. “Moat it is.”\n\nHe drops you in. It’s not a long fall. It’s a long swim.",
+      "choices": [
+        {
+          "label": "Start swimming",
+          "to": "moat"
+        }
+      ]
+    },
+    "end_troll": {
+      "text": "Doug does not move. You bounce off him like a tennis ball off a parked truck. He sighs, folds his crossword, and stands up. Then he keeps standing up, for much longer than seems reasonable.\n\nThe less said about the next part, the better. It’s in his incident report.",
+      "ending": {
+        "id": "troll",
+        "title": "Toll Violation",
+        "kind": "death"
+      }
+    },
+    "moat": {
+      "text": "The moat is green, warm, and still. Halfway across, a single enormous alligator surfaces beside you and just… looks at you. He has very sad eyes. Someone has painted KEVIN on his back.\n\nAcross the moat, a rusty drain pipe leads into the castle wall.",
+      "choices": [
+        {
+          "label": "Swim slowly and quietly to the drain pipe",
+          "to": "drain"
+        },
+        {
+          "label": "Reach out and pet Kevin",
+          "to": "end_kevin"
+        }
+      ]
+    },
+    "end_kevin": {
+      "text": "Kevin leans into your hand. For one beautiful moment, you think you’ve made a friend.\n\nKevin was not sad. Kevin was hungry. Those are the same eyes, it turns out.",
+      "ending": {
+        "id": "kevin",
+        "title": "Kevin",
+        "kind": "death"
+      }
+    },
+    "drain": {
+      "text": "You squeeze into the drain pipe, which is exactly as gross as you imagined plus one extra thing you didn’t. Thirty feet of crawling later, you pop out of a grate into the castle courtyard, dripping and smelling like a regret.",
+      "choices": [
+        {
+          "label": "Stand up and look around",
+          "to": "courtyard"
+        }
+      ]
+    },
+    "courtyard": {
+      "text": "The castle courtyard is cobblestone and silence. In the middle is an old stone well. Across from it are three doors: one red, one yellow, and one gold.\n\nThe gold door has a little brass plaque: TREASURE THIS WAY (PROBABLY).",
+      "choices": [
+        {
+          "label": "Open the red door",
+          "to": "red_door"
+        },
+        {
+          "label": "Open the yellow door",
+          "to": "yellow_room",
+          "if": [
+            "!gary"
+          ]
+        },
+        {
+          "label": "Visit Gary",
+          "to": "yellow_again",
+          "if": [
+            "gary"
+          ]
+        },
+        {
+          "label": "Open the gold door",
+          "to": "hallways"
+        },
+        {
+          "label": "Look down the well",
+          "to": "well"
+        }
+      ]
+    },
+    "well": {
+      "text": "The well is deep and dry. Far below, you can see a stone floor and the mouth of a tunnel running off under the lake. There’s an iron ring bolted to the rim, perfect for tying something to.",
+      "choices": [
+        {
+          "label": "Tie your rope to the ring and climb down",
+          "to": "tunnel",
+          "if": [
+            "rope"
+          ]
+        },
+        {
+          "label": "Step away from the well",
+          "to": "courtyard"
+        }
+      ]
+    },
+    "red_door": {
+      "text": "The red door has a sign on it: EMPLOYEES ONLY. Below that, smaller: SERIOUSLY. Below that, smaller still: WE MEAN IT. THERE ARE SNAKES.\n\nFrom behind the door comes a soft, enthusiastic hissing.",
+      "choices": [
+        {
+          "label": "Go in anyway",
+          "to": "end_red"
+        },
+        {
+          "label": "Respect the sign",
+          "to": "courtyard"
+        }
       ]
     },
     "end_red": {
-      "text": "You open the red door and immediately fall into a pit of small, slithery, extremely enthusiastic snakes. So sorry. You died.",
-      "ending": { "id": "snakes", "title": "Snake Pit", "kind": "death" }
+      "text": "You open the red door and immediately fall into a pit of small, slithery, extremely enthusiastic snakes. The sign was very clear. So sorry. You died.",
+      "ending": {
+        "id": "snakes",
+        "title": "Snake Pit",
+        "kind": "death"
+      }
     },
     "yellow_room": {
-      "text": "A dim room. A hunched figure in the corner turns around: a four-foot-eleven man in a stained bathrobe, eating a raw onion like an apple.\n\n\"I'm Gary. Night manager. You're gonna settle something for me.\" He leans in. \"Is a hot dog a sandwich?\"",
+      "text": "A dim room that smells strongly of onions. A hunched figure in the corner turns around: a four-foot-eleven man in a stained bathrobe, eating a raw onion like an apple.\n\n“I’m Gary. Night manager.” He takes a bite. “You’re gonna settle something for me, and you’re gonna get it right.” He leans in. “Is a hot dog a sandwich?”",
       "choices": [
-        { "label": "\"Yes.\"", "to": "end_gary" },
-        { "label": "\"No.\"", "to": "gary_friend" },
-        { "label": "Back out slowly", "to": "castle_gate" }
+        {
+          "label": "“Yes.”",
+          "to": "end_gary"
+        },
+        {
+          "label": "“No.”",
+          "to": "gary_friend"
+        },
+        {
+          "label": "“Can I phone a friend?”",
+          "to": "gary_phone"
+        },
+        {
+          "label": "Back out slowly",
+          "to": "courtyard"
+        }
+      ]
+    },
+    "gary_phone": {
+      "text": "Gary stares at you. “This ain’t a game show.” He takes another bite of onion, never breaking eye contact. “Yes or no.”",
+      "choices": [
+        {
+          "label": "“Yes.”",
+          "to": "end_gary"
+        },
+        {
+          "label": "“No.”",
+          "to": "gary_friend"
+        }
       ]
     },
     "end_gary": {
-      "text": "\"WRONG,\" Gary screams, and beats you to death with a rolled-up newspaper from 1994. It takes a very long time. Neither of you enjoys it.",
-      "ending": { "id": "gary-wrong", "title": "Wrong Answer", "kind": "death" }
+      "text": "“WRONG,” Gary screams, and beats you to death with a rolled-up newspaper from 1994. It takes a very long time. Neither of you enjoys it.",
+      "ending": {
+        "id": "gary-wrong",
+        "title": "Wrong Answer",
+        "kind": "death"
+      }
     },
     "gary_friend": {
-      "text": "\"FINALLY,\" Gary says, wiping away a tear. \"Somebody with sense.\"\n\nHe gives you a firm handshake and a business card that just says GARY. \"You ever get in trouble in this castle, I got your back.\"",
-      "set": ["gary"],
-      "choices": [{ "label": "Back to the courtyard", "to": "castle_gate" }]
-    },
-    "yellow_again": {
-      "text": "Gary salutes you with the onion. \"Go get 'em, champ.\"",
-      "choices": [{ "label": "Back to the courtyard", "to": "castle_gate" }]
-    },
-    "hallways": {
-      "text": "Behind the gold door the hallway splits: one passage goes forward, one to the left.",
+      "text": "“FINALLY,” Gary says, wiping away a tear. “Somebody with sense.”\n\nHe gives you a firm handshake and a business card that just says GARY. “You ever get in trouble in this castle, you yell for Gary. I hear everything. The walls are thin. I made sure.”",
+      "set": [
+        "gary"
+      ],
       "choices": [
-        { "label": "Go forward", "to": "chalice" },
-        { "label": "Go left", "to": "scratching_door" }
+        {
+          "label": "Back to the courtyard",
+          "to": "courtyard"
+        }
       ]
     },
-    "scratching_door": {
-      "text": "You find a door. From the other side: scratching, grunting, and what sounds like a man delivering an extremely intense monologue to an audience of no one.",
+    "yellow_again": {
+      "text": "Gary salutes you with the onion. “Go get ’em, champ. And hey. Whatever’s in that chalice down the hall? I didn’t put it there. I’m just saying, if you drink it, I know a guy.”",
       "choices": [
-        { "label": "Enter", "to": "end_bear" },
-        { "label": "Turn around", "to": "turn_around" }
+        {
+          "label": "Back to the courtyard",
+          "to": "courtyard"
+        }
+      ]
+    },
+    "hallways": {
+      "text": "Inside the castle, a long hallway lined with suits of armor. One of them is definitely breathing. You decide not to make it weird.\n\nThe hall branches: a passage straight ahead, a passage to the left with scratch marks on the floor, and a spiral staircase winding up into a tower. A doorway behind you leads back out to the courtyard.",
+      "choices": [
+        {
+          "label": "Go straight ahead",
+          "to": "chalice"
+        },
+        {
+          "label": "Follow the scratch marks to the left",
+          "to": "scratching_door"
+        },
+        {
+          "label": "Climb the spiral staircase",
+          "to": "library"
+        },
+        {
+          "label": "Go out to the courtyard",
+          "to": "courtyard"
+        }
+      ]
+    },
+    "library": {
+      "text": "The tower holds a dusty library. Torches burn in iron sconces. Above the fireplace hangs a portrait of a stern woman in a ruff collar, and as you walk in, her painted eyes follow you. Then her painted mouth moves.\n\n“A visitor,” she says. “I am Lady Agatha Fortescue-Wimble, and you are tracking mud on my carpet.”\n\nOn a lectern sits a black book wrapped in chains, with a sticky note: DON’T.",
+      "choices": [
+        {
+          "label": "Take a torch from the wall",
+          "to": "library_torch",
+          "if": [
+            "!torch"
+          ]
+        },
+        {
+          "label": "Ask Lady Agatha for advice",
+          "to": "portrait_advice"
+        },
+        {
+          "label": "Read the chained book",
+          "to": "end_portrait"
+        },
+        {
+          "label": "Go back downstairs",
+          "to": "hallways"
+        }
+      ]
+    },
+    "library_torch": {
+      "text": "You lift a torch from its sconce. Lady Agatha sniffs. “Bring that back when you’re done. Those are load-bearing torches.”\n\nYou do not ask what that means.",
+      "set": [
+        "torch"
+      ],
+      "choices": [
+        {
+          "label": "Look around the library",
+          "to": "library"
+        }
+      ]
+    },
+    "portrait_advice": {
+      "text": "Lady Agatha considers you. “Three things. The vault is dark, and the floor is not your friend; bring a light. The keys on the pillow are a decoy; my late husband hid the real fortune under the floor and drew a map of it for that ridiculous hermit. And when the pirates come—”\n\n“Pirates?”\n\n“When the pirates come,” she continues, “it helps to have friends. Large ones, ideally.”",
+      "choices": [
+        {
+          "label": "Thank her",
+          "to": "library"
+        }
+      ]
+    },
+    "end_portrait": {
+      "text": "You unwrap the chains and open the book. The first page says, in elegant script: “Thank you. I’ve been so bored.”\n\nThere’s a flash. When your vision clears, you’re looking out at the library from inside a gilded frame next to Lady Agatha. You can’t move. She’s delighted.\n\n“Finally,” she says, “someone to talk to.” She talks for the next four hundred years.",
+      "ending": {
+        "id": "portrait",
+        "title": "Hung in the Gallery",
+        "kind": "strange"
+      }
+    },
+    "scratching_door": {
+      "text": "The scratch marks lead to a heavy door. From the other side: scratching, grunting, and a man delivering an extremely intense monologue to an audience of no one.\n\n“…and THAT is why I left Hollywood! To find a WORTHY OPPONENT!” A roar answers him.",
+      "choices": [
+        {
+          "label": "Enter",
+          "to": "arena"
+        },
+        {
+          "label": "Turn around",
+          "to": "turn_around"
+        }
+      ]
+    },
+    "arena": {
+      "text": "Inside is a wrestling ring. In it, a man with alarming hair and a leather jacket is grappling with a grizzly bear. He introduces himself, mid-headlock, as Lars Vengeance, star of Vengeance III: Still Vengeful.\n\nThe bear sees you. Lars sees you. Lars whispers something in what might be Latin, and the bear lets go of him and turns toward you. Slowly. Hungrily.",
+      "choices": [
+        {
+          "label": "Hold out your sandwich",
+          "to": "bear_friend",
+          "if": [
+            "sandwich"
+          ]
+        },
+        {
+          "label": "Stand your ground",
+          "to": "end_bear"
+        },
+        {
+          "label": "Back out the door",
+          "to": "turn_around"
+        }
       ]
     },
     "end_bear": {
-      "text": "In a wrestling ring, a man with alarming hair and a leather jacket is grappling with a grizzly bear. He locks eyes with you, whispers something in what might be Latin, and the bear immediately switches opponents.\n\nYou are mauled. He takes a bow.",
-      "ending": { "id": "bear", "title": "Main Event", "kind": "death" }
+      "text": "You plant your feet. The bear does not care about your feet.\n\nYou are mauled with tremendous showmanship. Lars takes a bow to an empty arena and later describes the whole thing on a podcast nobody listens to.",
+      "ending": {
+        "id": "bear",
+        "title": "Main Event",
+        "kind": "death"
+      }
+    },
+    "bear_friend": {
+      "text": "The bear stops. Sniffs. Takes the soggy sandwich out of your hand with surprising delicacy and eats it in one bite, newspaper and all.\n\nThen it sits down next to you and leans its entire weight against your leg. You have a bear now.\n\nLars is furious. “I trained for SIX YEARS,” he shouts, and storms out of the ring. The bear watches him go and makes a small, unimpressed noise.",
+      "set": [
+        "!sandwich",
+        "bear"
+      ],
+      "choices": [
+        {
+          "label": "Continue down the hall, with your bear",
+          "to": "chalice"
+        }
+      ]
     },
     "turn_around": {
-      "text": "You back away. Through the door a voice bellows: \"COWARD!\" Then, more quietly: \"Honestly, good call.\"\n\nYou head the other way.",
-      "choices": [{ "label": "Keep going", "to": "chalice" }]
+      "text": "You back away. Through the door a voice bellows: “COWARD!” Then, more quietly: “Honestly, good call.”\n\nYou head down the other passage.",
+      "choices": [
+        {
+          "label": "Keep going",
+          "to": "chalice"
+        }
+      ]
     },
     "chalice": {
-      "text": "You enter a small room. On a pedestal sits a gold chalice full of a fizzing, ice-cold liquid. Condensation beads on the rim. It looks incredibly refreshing.",
+      "text": "You enter a small round room. On a marble pedestal sits a gold chalice full of a fizzing, ice-cold liquid. Condensation beads on the rim. Tiny bubbles rise and pop. It looks incredibly refreshing, and you realize you haven’t had anything to drink since the ferry.\n\nOn the far side, a passage slopes down toward a heavy iron door.",
       "choices": [
-        { "label": "Drink it", "to": "end_chalice", "if": ["!gary"] },
-        { "label": "Drink it", "to": "gary_rescue", "if": ["gary"] },
-        { "label": "Don't drink it", "to": "are_you_sure" }
+        {
+          "label": "Drink it",
+          "to": "end_chalice",
+          "if": [
+            "!gary"
+          ]
+        },
+        {
+          "label": "Drink it",
+          "to": "gary_rescue",
+          "if": [
+            "gary"
+          ]
+        },
+        {
+          "label": "Don’t drink it",
+          "to": "are_you_sure"
+        },
+        {
+          "label": "Go back to the main hall",
+          "to": "hallways"
+        }
       ]
     },
     "end_chalice": {
-      "text": "Did no one ever tell you not to drink strange liquids you find in castles? Come on. You get dizzy. Your legs stop working. A short man in a bathrobe finds you, shakes his head, and feeds you to a pack of chihuahuas.\n\nIt's a lot of chihuahuas.",
-      "ending": { "id": "chalice", "title": "Chihuahua Chow", "kind": "death" }
+      "text": "Did no one ever tell you not to drink strange liquids you find in castles? Come on. You get dizzy. Your legs stop working. A short man in a bathrobe finds you, shakes his head, and feeds you to a pack of chihuahuas.\n\nIt’s a lot of chihuahuas.",
+      "ending": {
+        "id": "chalice",
+        "title": "Chihuahua Chow",
+        "kind": "death"
+      }
     },
     "gary_rescue": {
-      "text": "You get dizzy and collapse. When you wake up, Gary is fanning you with a newspaper. \"Told you I had your back.\"\n\nYou never find the treasure. But Gary teaches you cribbage, you move into the yellow room, and it's honestly a pretty good life.",
-      "ending": { "id": "gary-rescue", "title": "Gary's Got Your Back", "kind": "strange" }
+      "text": "You get dizzy and collapse. When you wake up, Gary is fanning you with a newspaper. “Told you I knew a guy. The guy is me.”\n\nYou never find the treasure. But Gary teaches you cribbage, you move into the yellow room, and every Sunday you argue about whether a taco is a sandwich. It’s honestly a pretty good life.",
+      "ending": {
+        "id": "gary-rescue",
+        "title": "Gary’s Got Your Back",
+        "kind": "strange"
+      }
     },
     "are_you_sure": {
-      "text": "ARE YOU SURE?! It looks SO refreshing. It might be the good gas-station Sprite. The one that burns a little.",
+      "text": "ARE YOU SURE?! It looks SO refreshing. It might be the good gas-station Sprite. The one that burns a little. You’ve been walking all day. You deserve this.",
       "choices": [
-        { "label": "Fine. Drink it.", "to": "end_peer" },
-        { "label": "No. I have willpower.", "to": "treasure_room" }
+        {
+          "label": "Fine. Drink it.",
+          "to": "end_peer"
+        },
+        {
+          "label": "No. I have willpower.",
+          "to": "chalice_pass"
+        }
       ]
     },
     "end_peer": {
       "text": "It was not the good gas-station Sprite. You have made a terrible mistake. You lose consciousness and never wake up. Honestly, your fault for caving to peer pressure from a narrator.",
-      "ending": { "id": "peer-pressure", "title": "Peer Pressure", "kind": "death" }
+      "ending": {
+        "id": "peer-pressure",
+        "title": "Peer Pressure",
+        "kind": "death"
+      }
     },
-
-    "treasure_room": {
-      "text": "A vaulted chamber. On a velvet pillow, under a single dramatic spotlight, is the treasure:\n\nThe keys to a 1990 Honda Civic, and a coupon for a free 20-piece chicken nugget meal. Expired.",
+    "chalice_pass": {
+      "text": "You walk past the chalice. Behind you, very faintly, you hear it fizz in disappointment.\n\nThe passage slopes down to a heavy iron door, standing slightly ajar. Beyond it is total darkness.",
       "choices": [
-        { "label": "Take the keys and leave", "to": "end_civic" },
-        { "label": "Line up the map and find the X", "to": "end_true", "if": ["map"] },
-        { "label": "Pry up the suspiciously loose floor tile", "to": "end_tile", "if": ["!map"] }
+        {
+          "label": "Go through the iron door",
+          "to": "antechamber"
+        },
+        {
+          "label": "Go back to the main hall",
+          "to": "hallways"
+        }
+      ]
+    },
+    "antechamber": {
+      "chapter": "Chapter 4 · The Vault",
+      "text": "The room beyond the iron door is pitch black. Your footsteps echo off a high ceiling. Somewhere ahead you can feel cooler air, the kind that comes from a very big, very important room.\n\nYou take one step and hear a soft *click* under your foot, then a much louder *clunk* somewhere in the walls. Nothing happens. This time.",
+      "choices": [
+        {
+          "label": "Light the way with the torch",
+          "to": "plates_seen",
+          "if": [
+            "torch"
+          ]
+        },
+        {
+          "label": "Hold up the glowing mushroom",
+          "to": "plates_seen",
+          "if": [
+            "glow"
+          ]
+        },
+        {
+          "label": "Roll your doubloon across the floor to find the traps",
+          "to": "coin_roll",
+          "if": [
+            "coin"
+          ]
+        },
+        {
+          "label": "Feel your way across in the dark",
+          "to": "end_dark"
+        },
+        {
+          "label": "Go back for a light",
+          "to": "hallways"
+        }
+      ]
+    },
+    "plates_seen": {
+      "text": "Light spills across the floor. It’s a checkerboard of stone tiles, and about half of them are pressure plates, each one slightly raised. Every wall is lined with holes about the size of a spear.\n\nYou pick your way across, one safe tile at a time, holding your breath the entire way.",
+      "choices": [
+        {
+          "label": "Step through into the vault",
+          "to": "vault"
+        }
+      ]
+    },
+    "coin_roll": {
+      "text": "You crouch and roll the doubloon across the floor. It clatters over the tiles, and every few feet there’s a *click* and a spear shoots out of the wall and slams into the opposite side.\n\nBy the time the coin stops rolling you have a pretty good map of the room in your head, and a deep appreciation for the crab who gave it to you. You tiptoe along its path.",
+      "set": [
+        "!coin"
+      ],
+      "choices": [
+        {
+          "label": "Step through into the vault",
+          "to": "vault"
+        }
+      ]
+    },
+    "end_dark": {
+      "text": "Click. Click. Clunk.\n\nYou would have seen the pressure plates if you had brought a light. You would have seen the spear holes, too. Instead, you got to hear them.",
+      "ending": {
+        "id": "dark",
+        "title": "Lights Out",
+        "kind": "death"
+      }
+    },
+    "vault": {
+      "text": "The vault is a vaulted chamber, which feels a little on the nose. On a velvet pillow, under a single dramatic spotlight, is the treasure:\n\nThe keys to a 1990 Honda Civic, and a coupon for a free 20-piece chicken nugget meal. Expired.\n\nThe floor is made of big square flagstones. One near the pillow looks slightly loose.",
+      "choices": [
+        {
+          "label": "Take the keys and the coupon",
+          "to": "ambush"
+        },
+        {
+          "label": "Count four stones from the pillow, like the map says",
+          "to": "vault_x",
+          "if": [
+            "map",
+            "!gold"
+          ]
+        },
+        {
+          "label": "Pry up the loose flagstone",
+          "to": "end_tile",
+          "if": [
+            "!map"
+          ]
+        }
+      ]
+    },
+    "vault_x": {
+      "text": "You count four stones from the pillow and pry up the flagstone. Underneath is a chest packed with gold doubloons, a jeweled cutlass, and a note.\n\n“The Civic was a decoy. — Mgmt.”\n\nThe chest is heavy. You are now rich and slow.",
+      "set": [
+        "gold"
+      ],
+      "choices": [
+        {
+          "label": "Grab the keys and coupon too",
+          "to": "ambush"
+        }
+      ]
+    },
+    "end_tile": {
+      "text": "The flagstone was loose because it’s a trap. Obviously. The floor opens beneath you, and the last thing you see is the nugget coupon fluttering down after you like a tiny, greasy angel.",
+      "ending": {
+        "id": "tile",
+        "title": "Tile Fail",
+        "kind": "death"
+      }
+    },
+    "ambush": {
+      "chapter": "Chapter 5 · The Getaway",
+      "text": "The moment the keys leave the pillow, an alarm bell starts clanging somewhere above. Boots thunder on stone. The vault door slams open and in pour a dozen pirates, led by a tall, gaunt man with a hook for a hand and a parking permit hanging off the hook.\n\n“I am Captain Bones,” he announces, “and that, landlubber, is OUR Civic.”\n\nHis crew draws their cutlasses. One of them draws a spork.",
+      "choices": [
+        {
+          "label": "Fight them",
+          "to": "end_outnumbered",
+          "if": [
+            "!bear"
+          ]
+        },
+        {
+          "label": "Let the bear handle this",
+          "to": "bear_fight",
+          "if": [
+            "bear"
+          ]
+        },
+        {
+          "label": "Yell for Gary",
+          "to": "gary_arrives",
+          "if": [
+            "gary"
+          ]
+        },
+        {
+          "label": "Offer them the chest of gold",
+          "to": "pay_pirates",
+          "if": [
+            "gold"
+          ]
+        },
+        {
+          "label": "Tell them the Civic has a bad transmission",
+          "to": "bluff"
+        }
+      ]
+    },
+    "end_outnumbered": {
+      "text": "You raise your fists. Captain Bones raises his hook. Twelve pirates raise twelve cutlasses and one spork.\n\nIt’s the spork that gets you, in the end. Nobody expects the spork.",
+      "ending": {
+        "id": "outnumbered",
+        "title": "Outnumbered",
+        "kind": "death"
+      }
+    },
+    "bear_fight": {
+      "text": "The bear stands up on its hind legs. It is very, very tall. It roars, and the sound bounces off every wall of the vault like a freight train in a cathedral.\n\nThe pirates reconsider their career choices all at once. Captain Bones is the first one out the door. The bear drops back to all fours, looks at you, and waits. Good bear.",
+      "choices": [
+        {
+          "label": "Run for it, with the bear",
+          "to": "garage"
+        }
+      ]
+    },
+    "gary_arrives": {
+      "text": "“GARY!” you yell.\n\nThere is a pause. Then, from somewhere deep in the walls, a muffled voice: “Yeah, I heard.” A section of stone swings open and Gary steps out, bathrobe flapping, newspaper rolled tight.\n\nWhat follows is not a fight so much as a series of very loud disagreements about sandwiches that end with every pirate running away crying. Gary dusts off his hands. “Get outta here, champ. I got this.”",
+      "choices": [
+        {
+          "label": "Run for it",
+          "to": "garage"
+        }
+      ]
+    },
+    "pay_pirates": {
+      "text": "You shove the chest toward them. Captain Bones flips it open, and his eyes go wide with greed, then narrow with suspicion. “And the Civic?”\n\n“Keep the gold. I’m attached to the car.”\n\nHe looks at the doubloons, then at the keys, then at the doubloons. “Ye drive a hard bargain,” he says, which you did not, “but done.” The pirates drag the chest away, singing.",
+      "set": [
+        "!gold"
+      ],
+      "choices": [
+        {
+          "label": "Go find the Civic",
+          "to": "garage"
+        }
+      ]
+    },
+    "bluff": {
+      "text": "“Before you take it,” you say, “you should know the transmission slips between second and third. And the tape deck is stuck on one song.”\n\nCaptain Bones narrows his eyes. “What song?”",
+      "choices": [
+        {
+          "label": "“A sea shanty. A really long one.”",
+          "to": "bluff_win"
+        },
+        {
+          "label": "“Something by a boy band.”",
+          "to": "bluff_win"
+        },
+        {
+          "label": "“I made the transmission thing up.”",
+          "to": "end_bluff"
+        }
+      ]
+    },
+    "bluff_win": {
+      "text": "The pirates look at each other. A murmur goes through the crew. “I ain’t driving four hundred miles listening to that,” says the one with the spork. “I’ll mutiny first.”\n\n“You’ll do no such thing!” Bones bellows. Within seconds they’re all arguing, and within a minute it’s an actual mutiny. Nobody notices you tiptoe out the door with the keys.",
+      "choices": [
+        {
+          "label": "Run for it",
+          "to": "garage"
+        }
+      ]
+    },
+    "end_bluff": {
+      "text": "There is a long silence.\n\n“Thank you for your honesty,” says Captain Bones, and has you thrown into the moat. Kevin is very pleased.",
+      "ending": {
+        "id": "bluff",
+        "title": "Honesty Policy",
+        "kind": "death"
+      }
+    },
+    "garage": {
+      "text": "You burst out of a side door into a stone garage. There it is: a 1990 Honda Civic, sky blue, with one gray door and 340,000 miles on the odometer. It is the most beautiful thing you’ve ever seen.\n\nIt starts on the fourth try. You tear out of the castle, down the dirt road, through the palm trees, and onto the beach, where Rudy’s ferry is still bobbing in the shallows.",
+      "choices": [
+        {
+          "label": "Pull up next to the ferry",
+          "to": "beach_finale"
+        }
+      ]
+    },
+    "beach_finale": {
+      "text": "Rudy looks up from his magazine, then at the Civic, then at you.\n\n“Ride back’s four hundred,” he says. “Five for the car.”\n\nBehind you, faintly, you can hear pirates arguing.",
+      "choices": [
+        {
+          "label": "Load the gold, the bear, and Gary onto the ferry",
+          "to": "end_whole_crew",
+          "if": [
+            "gold",
+            "bear",
+            "gary"
+          ]
+        },
+        {
+          "label": "Pay Rudy in doubloons",
+          "to": "end_true",
+          "if": [
+            "gold"
+          ]
+        },
+        {
+          "label": "Offer Rudy the Civic’s tape deck",
+          "to": "end_civic",
+          "if": [
+            "!gold"
+          ]
+        }
       ]
     },
     "end_civic": {
-      "text": "Congrats. You win. I think?\n\nThe Civic has 340,000 miles on it and a tape deck permanently stuck on one song. You drive it home anyway. Legend.",
-      "ending": { "id": "civic", "title": "Civic Duty", "kind": "victory" }
+      "text": "Rudy leans into the Civic and listens to the tape deck, which is permanently stuck on one song. His eyes get misty. “That was our wedding song.” He pries the deck out with a screwdriver and tucks it under his arm. “Get on.”\n\nCongrats. You win. I think? You roll off the ferry on the mainland with no treasure, no gold, and a 1990 Honda Civic with a hole where the stereo used to be. Legend.\n\n(You still have that nugget coupon, by the way. Hang on to it. It’s cursed. But that’s another story.)",
+      "ending": {
+        "id": "civic",
+        "title": "Civic Duty",
+        "kind": "victory"
+      }
     },
     "end_true": {
-      "text": "You count flagstones from the pedestal and pry up the one under the X. Beneath it: a chest of gold doubloons, a jeweled cutlass, and a note.\n\n\"The Civic was a decoy. -- Mgmt.\"\n\nYou are rich. You take the Civic anyway.",
-      "ending": { "id": "true-treasure", "title": "The Actual Treasure", "kind": "victory" }
+      "text": "You hand Rudy a fistful of doubloons. He bites one, nods slowly, and says, “Sir, ma’am, or whatever you are, you can ride my ferry anytime.”\n\nYou sail into the sunset with a chest of gold, a jeweled cutlass, a 1990 Honda Civic, and an expired coupon you’ll keep as a souvenir. You are rich. You still drive the Civic.\n\n(Keep an eye on that coupon. It’s cursed. But that’s another story.)",
+      "ending": {
+        "id": "true-treasure",
+        "title": "The Actual Treasure",
+        "kind": "victory"
+      }
     },
-    "end_tile": {
-      "text": "The tile was loose because it's a trap. Obviously. The floor opens beneath you, and the last thing you see is the nugget coupon fluttering down after you like a tiny, greasy angel.",
-      "ending": { "id": "tile", "title": "Tile Fail", "kind": "death" }
+    "end_whole_crew": {
+      "text": "The bear goes up the ramp first, and the ferry lists badly to one side. Gary follows with a bag of onions. The chest of gold goes in the Civic’s trunk, and the Civic goes on last.\n\nRudy watches all of this without blinking. “That’s gonna be extra.”\n\nYou pay him triple. On the way home, Gary teaches the bear cribbage. The bear wins. You open a combination onion farm and bear sanctuary with the gold, and it does incredibly well.\n\nYou found the treasure. You found the actual treasure. And you found the friends along the way, which, it turns out, was also the treasure, plus the gold.",
+      "ending": {
+        "id": "whole-crew",
+        "title": "The Whole Crew",
+        "kind": "victory"
+      }
     }
   }
 }

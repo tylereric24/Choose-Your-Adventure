@@ -3,16 +3,26 @@
 Tiny branching text adventures with collectible endings and paid story packs.
 Installable web app (PWA), zero runtime dependencies, Node 20+.
 
-- **Free story:** *Treasure Island* (37 nodes, 14 endings), the original Python game rebuilt and expanded.
-- **Paid story:** *Curse of the Ghost Galleon* (22 nodes, 9 endings), the sequel, upsold from every Treasure Island ending.
-- **Retention loop:** endings gallery (undiscovered endings show only their type), undo, saved runs, "X% of players chose this" stats, share button.
+- **Free story:** *Treasure Island*, 5 chapters, 93 scenes, 22 endings, ~4,300 words. The original Python game rebuilt and expanded.
+- **Paid story:** *Curse of the Ghost Galleon*, 6 chapters, 83 scenes, 19 endings, ~5,200 words. The sequel, upsold from every Treasure Island ending.
+- **Retention loop:** items that change later scenes, chapter checkpoints, endings gallery (undiscovered endings show only their type), undo, saved runs, "X% of players chose this" stats, share button.
+
+| | Treasure Island | Ghost Galleon |
+|---|---|---|
+| Decisions per run (median / p90) | 12 / 33 | 8 / 21 |
+| Minutes per run | ~5 | ~4 |
+| Shortest winning run | 23 decisions | 22 decisions |
+| Hardest ending | 37 decisions | 26 decisions |
+
+Run lengths come from 20,000 simulated random-choice players (`npm run stats`), a pessimistic floor; real players who follow the hints go deeper.
 - **Monetization:** one-time Stripe Checkout purchases per story, plus an all-access pass. No accounts, no ads.
 
 ## Run it
 
 ```sh
 npm run dev      # http://localhost:3000, purchases unlock for free (DEV_UNLOCK=1)
-npm test         # validates every story + engine/server tests
+npm test         # validates every story, enforces length floors, engine/server tests
+npm run stats    # play-length metrics per story
 npm start        # production mode, see .env.example
 python3 main.py  # terminal version of the free stories
 ```
@@ -65,11 +75,13 @@ Drop a JSON file in `content/stories/`. Each node is either a passage with choic
 }
 ```
 
+- `items` (top level) maps flags to display names; those flags show as the player's inventory. Other flags stay hidden.
+- `chapter` on a node starts a chapter: shown as a heading, and used as the "Restart chapter" checkpoint.
 - `if`: all flags must hold (`"!flag"` = must not be set). `set`: on a choice or a node, adds flags (`"!flag"` clears).
 - `kind`: `death`, `victory`, or `strange`.
 - To sell it, set `"premium": true` and add a product to `content/products.json`.
 
-`npm run validate` walks every reachable (node, flags) state and fails on broken links, unreachable nodes or endings, flag dead-ends, and loops with no route to any ending. CI should run `npm test`.
+`npm run validate` walks every reachable (node, flags) state and fails on broken links, unreachable nodes or endings, flag dead-ends, and loops with no route to any ending. `test/length.test.js` enforces content floors (60+ scenes, 15+ endings, 4,000+ words, median run of 6+ decisions, no victory in under 15 decisions, under 8% of runs dying in the first 3 decisions, paid stories longer than free ones). CI should run `npm test`.
 
 ## Layout
 

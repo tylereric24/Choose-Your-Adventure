@@ -2,138 +2,1113 @@
   "id": "ghost-galleon",
   "title": "Curse of the Ghost Galleon",
   "tagline": "The sequel. The coupon was cursed.",
-  "description": "Three weeks after Treasure Island, a ghost ship materializes in a car dealership parking lot, and its skeleton captain wants something you have. Explore the ship, earn the crew's trust, and break a curse two decades in the making.",
+  "description": "The six-chapter sequel. A ghost galleon parks across four spaces at a used car lot, and its skeleton captain wants your coupon. Earn the crew’s trust, outwit the undead tax auditors, talk your way past a traffic stop on Route Nine, and break a curse three centuries in the making.",
   "premium": true,
   "order": 2,
   "accent": "#7fb7c9",
+  "items": {
+    "coupon": "Expired nugget coupon",
+    "lantern": "Blue lantern",
+    "logbook": "Captain’s logbook",
+    "hardtack": "Hardtack",
+    "doubloon": "Cursed doubloon",
+    "parrot": "Polly-Gone (parrot)"
+  },
   "start": "lot",
   "nodes": {
     "lot": {
-      "text": "Three weeks after the Treasure Island incident, you're at a used car lot trying to sell the Civic. The dealer has offered you $200 and a handshake.\n\nThen the fog rolls in. A rotting galleon slides out of it and parks across four spaces. A translucent pirate leans over the rail.\n\n\"Ye carry the Captain's coupon,\" he moans. \"Come aboard, or be cursed forever.\"",
+      "chapter": "Chapter 1 · The Lot",
+      "text": "Three weeks after the Treasure Island incident, you’re standing on a used car lot trying to sell the Civic. The dealer, a man named Chip with a mustache that has clearly seen things, has offered you two hundred dollars and a handshake. He’s already extended the handshake.\n\nThen the fog rolls in. Thick, cold, sudden. A rotting galleon slides out of it, sails tattered, lanterns burning blue, and parks across four spaces.\n\nA translucent pirate with one leg leans over the rail and moans: “Ye carry the Captain’s coupon. Come aboard, or be cursed forever.”\n\nChip retracts the handshake.",
+      "set": [
+        "coupon"
+      ],
       "choices": [
-        { "label": "Climb aboard", "to": "deck" },
-        { "label": "Offer to sell him the coupon for $40", "to": "end_haggle" },
-        { "label": "Jump in the Civic and drive", "to": "civic_chase" }
+        {
+          "label": "Climb aboard",
+          "to": "gangplank"
+        },
+        {
+          "label": "Try to negotiate",
+          "to": "haggle"
+        },
+        {
+          "label": "Jump in the Civic and drive",
+          "to": "civic_chase"
+        }
+      ]
+    },
+    "haggle": {
+      "text": "“How about,” you call up, “I sell you the coupon. Forty bucks.”\n\nThe pirate blinks. Ghosts aren’t supposed to be able to blink. “I can do ye a handful of doubloons,” he says. “Cursed ones. Only a little cursed.”\n\n“How cursed is a little cursed?”\n\nHe holds up a thumb and finger, very close together. Then, after thinking about it, moves them a bit further apart.",
+      "choices": [
+        {
+          "label": "Take the doubloons",
+          "to": "end_haggle"
+        },
+        {
+          "label": "Counteroffer: you’ll come aboard and hear him out",
+          "to": "gangplank"
+        },
+        {
+          "label": "Never mind",
+          "to": "lot"
+        }
       ]
     },
     "end_haggle": {
-      "text": "He pays in cursed doubloons. They're worth a fortune, technically, but every time you spend one you hear a sea shanty for the rest of the day. At full volume. Forever.\n\nYou're rich. You're just never not hearing \"Drunken Sailor.\"",
-      "ending": { "id": "haggle", "title": "Coupon Capitalist", "kind": "strange" }
+      "text": "He pays in cursed doubloons. They’re worth a fortune, technically. But every time you spend one, you hear a sea shanty for the rest of the day, at full volume, from no direction in particular.\n\nYou are rich. You are also never, ever not hearing “Drunken Sailor.” Chip buys the Civic for full price just to get you off his lot.",
+      "ending": {
+        "id": "haggle",
+        "title": "Coupon Capitalist",
+        "kind": "strange"
+      }
     },
     "civic_chase": {
-      "text": "The Civic coughs to life. In the mirror, the galleon lifts off the asphalt and follows you up the on-ramp, sailing on a river of fog.",
+      "text": "The Civic coughs to life on the second try, which is a personal best. You peel out of the lot. In the mirror, the galleon lifts off the asphalt with a groan of old timber and follows you up the on-ramp, sailing on a river of fog.\n\nCommuters are filming it. One of them is livestreaming. The galleon is gaining.",
       "choices": [
-        { "label": "Floor it", "to": "end_civic_chase" },
-        { "label": "Swerve into a fast-food drive-thru", "to": "drive_thru" }
+        {
+          "label": "Floor it",
+          "to": "floor_it"
+        },
+        {
+          "label": "Swerve into a fast-food drive-thru",
+          "to": "drive_thru"
+        },
+        {
+          "label": "Duck into an automatic car wash",
+          "to": "car_wash"
+        }
       ]
     },
     "end_civic_chase": {
-      "text": "The Civic's top speed is 58 miles per hour, downhill, with a tailwind. The galleon's top speed is \"ghost.\" The galleon also has cannons.",
-      "ending": { "id": "civic-chase", "title": "Top Speed 58", "kind": "death" }
+      "text": "The Civic’s top speed is fifty-eight miles per hour, downhill, with a tailwind. The galleon’s top speed is “ghost.” The galleon also has cannons.\n\nThe livestream gets eleven million views. You are not around to enjoy them.",
+      "ending": {
+        "id": "civic-chase",
+        "title": "Top Speed 58",
+        "kind": "death"
+      }
+    },
+    "car_wash": {
+      "text": "You pull into the car wash and the brushes close around you like a big soapy hug. For ninety glorious seconds you’re safe. Nobody can find you in here. Not even the dead.\n\nThe Civic rolls out the other end, sparkling. The galleon is waiting at the exit, sails folded, the one-legged pirate leaning patiently on the rail.\n\n“Ye missed a spot,” he says.",
+      "choices": [
+        {
+          "label": "Sigh, get out of the car, and climb aboard",
+          "to": "gangplank"
+        }
+      ]
     },
     "drive_thru": {
-      "text": "The galleon screeches to a halt at the curb. There's a sign on the window: NO SHIRT, NO SHOES, NO SERVICE. Ghosts have neither. They can't follow you in.\n\nThe speaker crackles. \"Welcome, can I take your order?\"",
+      "text": "The galleon screeches to a halt at the curb. There’s a sign on the drive-thru window: NO SHIRT, NO SHOES, NO SERVICE. Ghosts have neither. They can’t follow you in.\n\nThe speaker crackles. “Welcome to Burger Barn, can I take your order?”\n\nYour hand drifts to the coupon in your pocket.",
       "choices": [
-        { "label": "Redeem the expired nugget coupon", "to": "end_nuggets" },
-        { "label": "Order a coffee, then go back and face them", "to": "deck" }
+        {
+          "label": "Try to redeem the expired nugget coupon here",
+          "to": "end_nuggets"
+        },
+        {
+          "label": "Order a coffee, then go back and face them",
+          "to": "gangplank"
+        }
       ]
     },
     "end_nuggets": {
-      "text": "The cashier looks at the coupon, looks at the ghost ship idling at the curb, and honors it without a word.\n\nYou eat twenty nuggets. They're excellent. Then the fog wraps around you and the curse transfers. You are now the ghost captain. The benefits are terrible, but the hat is incredible.",
-      "ending": { "id": "nuggets", "title": "Under New Management", "kind": "strange" }
+      "text": "The cashier looks at the coupon, looks at the ghost ship idling at the curb, and honors it without a word.\n\nYou eat twenty nuggets in the parking lot. They’re excellent. Then the fog wraps around you, cold as a freezer door, and you feel the curse transfer. It was the coupon all along, and it wanted to be eaten.\n\nYou are now the ghost captain. The benefits are terrible, but the hat is incredible.",
+      "ending": {
+        "id": "nuggets",
+        "title": "Under New Management",
+        "kind": "strange"
+      }
     },
-
-    "deck": {
-      "text": "The deck is crowded with translucent pirates, all of whom look extremely tired. A parrot skeleton on the mainmast clacks its beak at you.\n\nThe first mate points with a bony finger: the captain's cabin aft, the galley below, the crow's nest above.",
+    "gangplank": {
+      "chapter": "Chapter 2 · All Hands",
+      "text": "You climb the gangplank. The one-legged pirate catches your elbow with a cold, misty hand.\n\n“Mr. Wobbly, first mate,” he says, and gives a little bow that almost tips him over. “The Captain’ll want to see ye. But the Captain sees nobody what hasn’t pulled their weight on this ship. Them’s the rules.” He hands you a mop. “Find a job. Do the job. Then knock.”\n\nBehind him, a dozen ghost sailors are pretending not to stare at you, very badly.",
       "choices": [
-        { "label": "Go to the captain's cabin", "to": "cabin" },
-        { "label": "Go down to the galley", "to": "galley" },
-        { "label": "Climb to the crow's nest", "to": "crows_nest" }
+        {
+          "label": "Look around the deck",
+          "to": "deck"
+        }
+      ]
+    },
+    "deck": {
+      "text": "The main deck of the galleon. Ghost sailors coil ropes that aren’t there and polish brass that stopped shining three hundred years ago. Mr. Wobbly stands at the wheel, humming.\n\nStairs lead down to the galley, where something is simmering, and further down to the hold. The rigging climbs up toward the crow’s nest. At the stern is a heavy door with a brass plate: CAPTAIN — KNOCK, AND BE SURE ABOUT IT.",
+      "choices": [
+        {
+          "label": "Swab the deck",
+          "to": "swab"
+        },
+        {
+          "label": "Go down to the galley",
+          "to": "galley"
+        },
+        {
+          "label": "Go down to the hold",
+          "to": "hold"
+        },
+        {
+          "label": "Climb the rigging",
+          "to": "rigging"
+        },
+        {
+          "label": "Knock on the captain’s door",
+          "to": "cabin",
+          "if": [
+            "trusted"
+          ]
+        },
+        {
+          "label": "Knock on the captain’s door",
+          "to": "door_refused",
+          "if": [
+            "!trusted"
+          ]
+        },
+        {
+          "label": "Jump overboard and go home",
+          "to": "end_overboard"
+        }
+      ]
+    },
+    "door_refused": {
+      "text": "Before your knuckles touch the door, Mr. Wobbly is beside you, shaking his head slowly.\n\n“Not yet, matey. Captain’s particular. Ye’ve not pulled yer weight.” He nods at the mop in your hand, which you’re still holding. “That’s a start, but it ain’t a finish.”",
+      "choices": [
+        {
+          "label": "Find something useful to do",
+          "to": "deck"
+        }
+      ]
+    },
+    "end_overboard": {
+      "text": "You vault the rail and land in the dealership dumpster, which breaks your fall and your spirit.\n\nYou sell the Civic to Chip for two hundred dollars and go home. That night, the coupon is on your pillow. You throw it away. The next night it’s on your pillow again, slightly damp, smelling of sea. You give up and frame it.\n\nThe galleon parks outside your apartment every night after that. The neighbors complain. You start leaving it cookies.",
+      "ending": {
+        "id": "overboard",
+        "title": "Return to Sender",
+        "kind": "strange"
+      }
+    },
+    "swab": {
+      "text": "You swab. It’s honest work. The mop squeaks across the boards, and you get into a rhythm, and for a moment you forget you’re on a cursed ship.\n\nThen the mop goes straight through a ghost sailor who’s napping on the deck. He sits bolt upright, mop handle sticking out of his chest, and stares at you.",
+      "choices": [
+        {
+          "label": "Apologize profusely",
+          "to": "swab_sorry"
+        },
+        {
+          "label": "Keep mopping. He was in the way.",
+          "to": "swab_bold"
+        }
+      ]
+    },
+    "swab_sorry": {
+      "text": "You apologize. He waves it off. “Nobody’s touched me in three hundred years,” he says, a little choked up. “Not even accidentally. That was nice.”\n\nHe tells the rest of the crew. By the time you’ve finished the deck, three different ghosts have asked if you could mop them too. You do. Word gets around that you’re all right.",
+      "set": [
+        "trusted"
+      ],
+      "choices": [
+        {
+          "label": "Back to the main deck",
+          "to": "deck"
+        }
+      ]
+    },
+    "swab_bold": {
+      "text": "You keep mopping, right through him. The ghost watches you for a long moment, then bursts out laughing. “Now THAT’S a sailor,” he wheezes. “Wobbly! This one’s got salt!”\n\nMr. Wobbly gives you a thumbs up from the wheel. You are not sure what you did, but it seems to have counted.",
+      "set": [
+        "trusted"
+      ],
+      "choices": [
+        {
+          "label": "Back to the main deck",
+          "to": "deck"
+        }
       ]
     },
     "galley": {
-      "text": "The ghost cook is stirring a pot of soup made of nothing. Steam that isn't there rises from it. \"Taste it,\" he insists. \"Nobody ever tastes it.\"\n\nOn the wall hangs a lantern burning with a cold blue flame.",
+      "text": "The galley is warm, which is the first warm thing on this ship. A huge ghost in a stained apron is stirring a pot of soup made of nothing. Steam that isn’t there rises from it. A name tag on his apron says CHEF BARTHOLOMEW.\n\n“Taste it,” he insists, holding out a ladle. “Nobody ever tastes it.”\n\nOn the wall behind him hangs a lantern burning with a cold blue flame.",
       "choices": [
-        { "label": "Taste the soup", "to": "end_soup" },
-        { "label": "Grab the blue lantern while he isn't looking", "to": "galley_lantern", "if": ["!lantern"] },
-        { "label": "Head back up", "to": "deck" }
+        {
+          "label": "Taste the soup",
+          "to": "soup_taste"
+        },
+        {
+          "label": "Offer to help in the kitchen",
+          "to": "galley_help",
+          "if": [
+            "!lantern"
+          ]
+        },
+        {
+          "label": "Grab the blue lantern while he isn’t looking",
+          "to": "galley_lantern",
+          "if": [
+            "!lantern"
+          ]
+        },
+        {
+          "label": "Head back up",
+          "to": "deck"
+        }
       ]
     },
     "end_soup": {
-      "text": "It tastes like regret and a little bit of nutmeg. You feel lighter. Much lighter. You look down and can see the floor through your own feet.\n\nThe cook beams. \"Finally. Help in the kitchen.\"",
-      "ending": { "id": "soup", "title": "Soup of the Damned", "kind": "death" }
+      "text": "It tastes like regret and a little bit of nutmeg. You feel lighter. Much lighter. You look down and can see the floor through your own feet.\n\nChef Bartholomew beams and hands you an apron. “Finally,” he says. “Help in the kitchen.”",
+      "ending": {
+        "id": "soup",
+        "title": "Soup of the Damned",
+        "kind": "death"
+      }
+    },
+    "galley_help": {
+      "text": "Bartholomew looks at you like you’ve offered him a kidney. “Help? Nobody offers help.” He wipes his hands on his apron. “The soup is missing one thing. Salt. Real salt. And ghosts…” His voice cracks. “Ghosts cannot cry.”\n\nHe slides a cutting board in front of you. On it is nothing at all. “Invisible onions,” he says. “Chop.”",
+      "choices": [
+        {
+          "label": "Chop the invisible onions and think about something sad",
+          "to": "galley_tears"
+        },
+        {
+          "label": "Tell him the soup is fine the way it is",
+          "to": "galley_sulk"
+        }
+      ]
+    },
+    "galley_tears": {
+      "text": "You chop nothing and think about the Civic’s tape deck, and the one song it plays, and how you’ll never know what the other songs on that tape were. A single tear rolls down your cheek and drips into the pot.\n\nThe soup turns gold. Bartholomew tastes it and sobs, dryly. “Perfect. Perfect.” He presses the blue lantern from the wall into your hands. “Take it. It never goes out, and it lights what fog hides. Tell the Captain Bartholomew vouches for you.”",
+      "set": [
+        "trusted",
+        "lantern"
+      ],
+      "choices": [
+        {
+          "label": "Head back up",
+          "to": "deck"
+        }
+      ]
+    },
+    "galley_sulk": {
+      "text": "“FINE?” Bartholomew roars. “Fine is for gruel! Fine is for hospital Jell-O!” He turns his back on you and stirs aggressively.\n\nYou have hurt a ghost’s feelings. It is somehow worse than hurting a living person’s feelings.",
+      "choices": [
+        {
+          "label": "Back away",
+          "to": "galley"
+        }
+      ]
     },
     "galley_lantern": {
-      "text": "You pocket the lantern. Its blue flame doesn't flicker, doesn't burn, and lights up the fog around it like a searchlight. The cook doesn't notice. He's crying softly into the soup.",
-      "set": ["lantern"],
-      "choices": [{ "label": "Head back up", "to": "deck" }]
+      "text": "You lift the lantern off its hook while Bartholomew is busy stirring. Its blue flame doesn’t flicker, doesn’t burn, and lights the steam around it like a searchlight cutting through cloud.\n\nBartholomew doesn’t notice. He’s crying softly, without tears, into the soup.",
+      "set": [
+        "lantern"
+      ],
+      "choices": [
+        {
+          "label": "Sneak back up",
+          "to": "deck"
+        }
+      ]
+    },
+    "hold": {
+      "text": "The hold is dark and smells of brine and old money. Sea chests are stacked to the beams, all overflowing with gold doubloons. A thin ghost in spectacles sits at a little desk, counting coins one at a time and writing in a ledger. He doesn’t look up.\n\n“Nine thousand, nine hundred and ninety-eight,” he murmurs. “Nine thousand, nine hundred and ninety-nine…”\n\nOn a barrel nearby sits a thick leather book stamped LOG. A crate is labeled HARDTACK, BEST BEFORE 1721. And curled on top of a chest is a translucent gray cat, watching you with enormous eyes.",
+      "choices": [
+        {
+          "label": "Offer to help count",
+          "to": "count",
+          "if": [
+            "!doubloon"
+          ]
+        },
+        {
+          "label": "Offer to help count",
+          "to": "count_caught",
+          "if": [
+            "doubloon"
+          ]
+        },
+        {
+          "label": "Pocket a doubloon",
+          "to": "doubloon_take",
+          "if": [
+            "!doubloon"
+          ]
+        },
+        {
+          "label": "Read the logbook",
+          "to": "logbook_read",
+          "if": [
+            "!logbook"
+          ]
+        },
+        {
+          "label": "Take some hardtack",
+          "to": "hardtack_take",
+          "if": [
+            "!hardtack"
+          ]
+        },
+        {
+          "label": "Pet the ghost cat",
+          "to": "mittens_pet"
+        },
+        {
+          "label": "Go back up",
+          "to": "deck"
+        }
+      ]
+    },
+    "count": {
+      "text": "“Help?” The ghost peers at you over his spectacles. “I am Pennywhistle, quartermaster. I have been counting this treasure since 1715. I keep losing my place.”\n\nYou count together. It takes an hour. You hit ten thousand exactly, and Pennywhistle sets down his quill and stares at the number for a long time.\n\n“It balances,” he whispers. “It finally balances.” He shakes your hand, and his is cold as January. “The Captain will hear of this.”",
+      "set": [
+        "trusted"
+      ],
+      "choices": [
+        {
+          "label": "Look around the hold",
+          "to": "hold"
+        }
+      ]
+    },
+    "count_caught": {
+      "text": "You count together. It takes an hour. You get to nine thousand, nine hundred and ninety-nine, and stop.\n\nPennywhistle looks at the ledger. Then at the empty spot on the desk. Then, very slowly, at your pocket.\n\n“One,” he says quietly, “is missing.”",
+      "choices": [
+        {
+          "label": "Put the doubloon back",
+          "to": "count_return"
+        },
+        {
+          "label": "Blame the cat",
+          "to": "end_mittens"
+        }
+      ]
+    },
+    "count_return": {
+      "text": "You set the doubloon on the desk. Pennywhistle adds it to the pile, writes “10,000” in the ledger, and underlines it twice.\n\n“Honesty,” he says, “is rarer than gold on this ship. Rarer than gold anywhere, really.” He shakes your hand. “I shall tell the Captain you balanced the books. I shall leave out the part where you unbalanced them first.”",
+      "set": [
+        "!doubloon",
+        "trusted"
+      ],
+      "choices": [
+        {
+          "label": "Look around the hold",
+          "to": "hold"
+        }
+      ]
+    },
+    "doubloon_take": {
+      "text": "You slip a doubloon into your pocket. Pennywhistle keeps counting and doesn’t notice.\n\nThe coin is very cold. Colder than metal should be. It stays cold even after it’s been in your pocket a while, like it’s keeping its own temperature out of spite.",
+      "set": [
+        "doubloon"
+      ],
+      "choices": [
+        {
+          "label": "Look around the hold",
+          "to": "hold"
+        }
+      ]
+    },
+    "logbook_read": {
+      "text": "The logbook is three hundred years of the Captain’s handwriting. Most of it is weather. But on one page, underlined:\n\n“The Auditors pursue us still. Ghosts of the Crown Revenue, dead these three centuries, sworn to collect a tariff on our cargo that we never paid. They cannot be outrun. They cannot be outfought. But they have one weakness: they MUST stop to process any properly filed receipt. I have kept every receipt since 1715. They are tucked in the back of this book. God help us all.”\n\nThe back of the book is stuffed fat with yellowed receipts. You keep it.",
+      "set": [
+        "logbook"
+      ],
+      "choices": [
+        {
+          "label": "Look around the hold",
+          "to": "hold"
+        }
+      ]
+    },
+    "hardtack_take": {
+      "text": "You pry open the crate and take a few squares of hardtack. They are three hundred years old and roughly the density of a brick. You tap one on the crate and it rings like a bell.\n\nIt’s not food anymore. It’s an artifact. You put it in your pocket anyway; you never know.",
+      "set": [
+        "hardtack"
+      ],
+      "choices": [
+        {
+          "label": "Look around the hold",
+          "to": "hold"
+        }
+      ]
+    },
+    "end_mittens": {
+      "text": "The cat lets you reach for it. It even leans in. Your hand passes through its head, and something cold and fuzzy settles into the back of your mind.\n\nThe cat has chosen you. That is how cats work, alive or dead; they choose, you comply. You spend the rest of your life on the galleon, opening doors the cat can walk through, closing doors the cat has decided it wants to be on the other side of. It is not a bad life. It is just not your life anymore.",
+      "ending": {
+        "id": "mittens",
+        "title": "Cat Person",
+        "kind": "strange"
+      }
+    },
+    "rigging": {
+      "text": "You climb the rigging. The ropes are cold and slightly damp and occasionally not there, which keeps things interesting. Halfway up, on a yardarm, perches a parrot skeleton. Every bone is perfectly in place. It clacks its beak at you.\n\n“POLLY-GONE,” it squawks. “POLLY-GONE WANTS A CRACKER.”",
+      "choices": [
+        {
+          "label": "Offer the parrot some hardtack",
+          "to": "parrot_friend",
+          "if": [
+            "hardtack",
+            "!parrot"
+          ]
+        },
+        {
+          "label": "Keep climbing to the crow’s nest",
+          "to": "crows_nest"
+        },
+        {
+          "label": "Climb back down",
+          "to": "deck"
+        }
+      ]
+    },
+    "parrot_friend": {
+      "text": "You hold out a square of hardtack. Polly-Gone examines it, then bites down with a CRACK that echoes off the sails. It’s the first cracker anyone has given it in three centuries.\n\nThe skeleton bird hops onto your shoulder and settles there. It weighs almost nothing. It clacks its beak in your ear, which you decide is affection. Polly-Gone is yours now. Or you are Polly-Gone’s. It’s hard to say.",
+      "set": [
+        "parrot",
+        "!hardtack"
+      ],
+      "choices": [
+        {
+          "label": "Keep climbing",
+          "to": "crows_nest"
+        },
+        {
+          "label": "Climb back down",
+          "to": "deck"
+        }
+      ]
     },
     "crows_nest": {
-      "text": "From the crow's nest you can see the whole city: the car lot, the interstate, and, out on the bay, a second ghost ship. Bigger. Darker. Heading straight for you.\n\nThere's a brass warning bell beside you.",
+      "text": "From the crow’s nest you can see the whole city: the car lot, the interstate, Chip doing a lot of phone calls. And out on the bay, coming in fast through the fog, a second ghost ship. Bigger than this one. Darker. Flying a flag with a coat of arms and a calculator on it.\n\nIt’s heading straight for you. There’s a brass warning bell beside you.",
       "choices": [
-        { "label": "Ring the warning bell", "to": "ring_bell", "if": ["!warned"] },
-        { "label": "Jump to the deck to save time", "to": "end_jump" },
-        { "label": "Climb down", "to": "deck" }
+        {
+          "label": "Ring the warning bell",
+          "to": "ring_bell",
+          "if": [
+            "!warned"
+          ]
+        },
+        {
+          "label": "Jump to the deck to save time",
+          "to": "end_jump"
+        },
+        {
+          "label": "Climb down",
+          "to": "deck"
+        }
       ]
     },
     "ring_bell": {
-      "text": "CLANG CLANG CLANG. The crew scrambles to the cannons. The first mate looks up at you and gives a slow, approving nod. The parrot skeleton clacks twice, which you choose to interpret as respect.",
-      "set": ["warned"],
-      "choices": [{ "label": "Climb down", "to": "deck" }]
+      "text": "CLANG CLANG CLANG.\n\nThe whole ship comes alive. Ghost sailors run for the cannons. Mr. Wobbly spins the wheel. Somewhere below, Chef Bartholomew yells something about his soup.\n\nMr. Wobbly looks up at you and gives a slow, approving nod. Everyone on this ship just saw you do something useful.",
+      "set": [
+        "warned",
+        "trusted"
+      ],
+      "choices": [
+        {
+          "label": "Climb down",
+          "to": "deck"
+        }
+      ]
     },
     "end_jump": {
       "text": "It saves time. It costs everything else.",
-      "ending": { "id": "jump", "title": "Shortcut", "kind": "death" }
+      "ending": {
+        "id": "jump",
+        "title": "Shortcut",
+        "kind": "death"
+      }
     },
-
     "cabin": {
-      "text": "The captain is a skeleton in a magnificent feathered hat, slumped over a table covered in maps of fast-food locations.\n\n\"The coupon,\" he rasps. \"Twenty pieces. It was to be my last meal, before the curse. Give it to me.\"",
+      "chapter": "Chapter 3 · The Captain",
+      "text": "The captain’s cabin is lit by blue candles. Maps cover every wall, and every one of them is a map of fast-food restaurants, centuries of them, crossed out in red one by one.\n\nAt the table sits a skeleton in a magnificent feathered hat. He looks up, and his eye sockets glow.\n\n“I am Captain Ezekiel Marrowbone,” he rasps. “Word is ye’ve pulled yer weight. Good.” He holds out one bony hand, palm up. “Now. The coupon. Twenty pieces. Give it to me.”",
       "choices": [
-        { "label": "Hand over the coupon", "to": "coupon_twist" },
-        { "label": "Ask why it's expired", "to": "captain_lore" },
-        { "label": "Refuse", "to": "end_plank" }
+        {
+          "label": "Hand over the coupon",
+          "to": "coupon_twist"
+        },
+        {
+          "label": "Ask why he wants it so badly",
+          "to": "captain_lore"
+        },
+        {
+          "label": "Refuse",
+          "to": "plank_threat"
+        }
       ]
     },
     "captain_lore": {
-      "text": "\"Coupons from the Golden Age of Nuggets never truly expire,\" he says darkly. \"They merely become... legally contested.\"\n\nHe taps a map. A drive-thru, two miles away, circled in blood. Or ketchup.",
+      "text": "He’s quiet for a moment. “In 1715, a sea witch cursed me and my crew. We’d sail forever, she said, until I ate a proper last meal. I’ve tried everything. Roast pig. Turtle soup. Every tavern in every port. None of it was it.”\n\nHe taps a map. “Then, in 1987, I found it. Nugget Hut. The Golden Age of Nuggets. I knew it the moment I smelled it. I bought a coupon for a twenty-piece. And then…” He sighs, a sound like wind through a keyhole. “It was a Sunday. They were closed. And the coupon blew away in the fog. It’s been drifting ever since. Until it found you.”",
       "choices": [
-        { "label": "Hand over the coupon", "to": "coupon_twist" },
-        { "label": "Refuse", "to": "end_plank" }
+        {
+          "label": "Hand over the coupon",
+          "to": "coupon_twist"
+        },
+        {
+          "label": "Refuse",
+          "to": "plank_threat"
+        }
+      ]
+    },
+    "plank_threat": {
+      "text": "The candles gutter. The captain rises, and keeps rising; he’s much taller than he looked sitting down.\n\n“Then ye walk the plank,” he says.\n\nYou point out that the ship is in a parking lot. He points out that it’s a very tall ship.",
+      "choices": [
+        {
+          "label": "“Fine. Here’s the coupon.”",
+          "to": "coupon_twist"
+        },
+        {
+          "label": "“Make me.”",
+          "to": "end_plank"
+        }
       ]
     },
     "end_plank": {
-      "text": "\"Then ye walk the plank,\" he says. You point out that you're in a parking lot. He points out that it's a very tall ship.",
-      "ending": { "id": "plank", "title": "Walk the Plank", "kind": "death" }
+      "text": "He makes you.\n\nIt’s a long way down to the asphalt. Chip, still on the lot, sees the whole thing and lowers his offer on the Civic to one hundred and fifty dollars.",
+      "ending": {
+        "id": "plank",
+        "title": "Walk the Plank",
+        "kind": "death"
+      }
     },
     "coupon_twist": {
-      "text": "He reads the coupon, and his jaw falls off. He puts it back on. \"Must be redeemed... at a participating location.\"\n\nBefore you can respond, the ship lurches. Out in the fog, cannons boom. The second ghost ship is here.",
+      "text": "You hand him the coupon. He holds it up to the candle and reads it, and his jaw falls off. He catches it and puts it back on.\n\n“EXPIRED?” The cabin shakes. Then he reads the fine print, and goes very still. “‘Valid only at participating locations,’” he whispers. “Then there’s still a chance. The original. Nugget Hut Number One, on Route Nine.” He presses the coupon back into your hand. “You keep it. Ye’ve luckier hands than mine.”\n\nAnd then the whole ship lurches sideways. Outside, through the fog, cannons boom.",
       "choices": [
-        { "label": "Run on deck", "to": "battle", "if": ["warned"] },
-        { "label": "Run on deck", "to": "end_rammed", "if": ["!warned"] }
+        {
+          "label": "Run out on deck",
+          "to": "battle",
+          "if": [
+            "warned"
+          ]
+        },
+        {
+          "label": "Run out on deck",
+          "to": "end_rammed",
+          "if": [
+            "!warned"
+          ]
+        }
       ]
     },
     "end_rammed": {
-      "text": "Nobody saw it coming, because nobody was in the crow's nest. The enemy ship rams you broadside. The galleon splits in half, and so, regrettably, do you.",
-      "ending": { "id": "rammed", "title": "Should've Looked Up", "kind": "death" }
+      "text": "Nobody saw it coming, because nobody was watching from the crow’s nest. The enemy ship comes out of the fog and rams you broadside.\n\nThe galleon splits clean in half, and so, regrettably, do you.",
+      "ending": {
+        "id": "rammed",
+        "title": "Should’ve Looked Up",
+        "kind": "death"
+      }
     },
     "battle": {
-      "text": "Thanks to your warning, the crew is already at the cannons. The enemy ship is crewed entirely by ghostly tax auditors, and they're hiding in the fog.",
+      "chapter": "Chapter 4 · The Auditors",
+      "text": "Thanks to your warning, the crew is already at the cannons. Out in the fog looms the enemy ship, and lining its rail are ghosts in powdered wigs and ink-stained cuffs, every one of them holding a clipboard.\n\n“By order of the Crown Revenue,” their leader shrieks, “you are three hundred and eleven years in arrears! Prepare to be assessed!”\n\nThen they vanish into the fog. You hear their quills scratching all around you.",
       "choices": [
-        { "label": "Fire the cannons blindly into the fog", "to": "end_fog", "if": ["!lantern"] },
-        { "label": "Hold the blue lantern high", "to": "battle_win", "if": ["lantern"] }
+        {
+          "label": "Hold the blue lantern high",
+          "to": "battle_win",
+          "if": [
+            "lantern"
+          ]
+        },
+        {
+          "label": "Hand them the captain’s logbook of receipts",
+          "to": "battle_paper",
+          "if": [
+            "logbook"
+          ]
+        },
+        {
+          "label": "Fire the cannons blindly into the fog",
+          "to": "end_fog",
+          "if": [
+            "!lantern"
+          ]
+        },
+        {
+          "label": "Demand to see their credentials",
+          "to": "credentials"
+        },
+        {
+          "label": "Surrender to the auditors",
+          "to": "end_audited"
+        }
       ]
     },
     "end_fog": {
-      "text": "You fire into the fog. They fire back. The difference is they can see in fog, being ghosts, and you can't, being lunch.",
-      "ending": { "id": "fog", "title": "Lost in the Fog", "kind": "death" }
+      "text": "You fire into the fog. They fire back. The difference is that they can see in fog, being ghosts, and you can’t, being lunch.",
+      "ending": {
+        "id": "fog",
+        "title": "Lost in the Fog",
+        "kind": "death"
+      }
+    },
+    "end_audited": {
+      "text": "You raise your hands. The auditors swarm aboard, delighted. Nobody ever surrenders to them.\n\nThey assess the ship, the crew, the cannons, the soup, and you. You are found to owe four hundred years of back taxes on the Civic. To work it off, you are given a powdered wig and a clipboard.\n\nYou are an auditor now. The dental plan is surprisingly good.",
+      "ending": {
+        "id": "audited",
+        "title": "Assessed",
+        "kind": "strange"
+      }
+    },
+    "credentials": {
+      "text": "“Hold on,” you shout into the fog. “Before anybody assesses anything, I want to see some credentials.”\n\nThe scratching stops. After a pause, a ghostly hand emerges from the fog holding a parchment with a wax seal: OFFICIAL COMMISSION OF THE CROWN REVENUE.",
+      "choices": [
+        {
+          "label": "Check the expiration date",
+          "to": "credentials_expired"
+        },
+        {
+          "label": "“Looks legit. Carry on.”",
+          "to": "end_audited"
+        }
+      ]
+    },
+    "credentials_expired": {
+      "text": "You squint at the bottom of the parchment. In very small print: VALID UNTIL 1789.\n\n“This expired two hundred and thirty-some years ago,” you say.\n\nThere is a horrified silence in the fog. Then a wail goes up from the enemy ship, the specific wail of a bureaucrat who has realized his paperwork is out of date. Their ship turns and flees, presumably to renew.",
+      "choices": [
+        {
+          "label": "Cheer with the crew",
+          "to": "battle_win"
+        }
+      ]
+    },
+    "battle_paper": {
+      "text": "You hold the logbook over the rail and shake it. Three hundred years of receipts flutter out into the fog.\n\nEvery auditor freezes. Then, one by one, they drop their weapons, sit down cross-legged on their deck, and begin to process. Stamping. Initialing. Filing. You hear one of them weep: “There are receipts for HAM in here. Individual hams.”\n\nThey’ll be at it for a century at least.",
+      "set": [
+        "!logbook"
+      ],
+      "choices": [
+        {
+          "label": "Sail away while they’re busy",
+          "to": "battle_win"
+        }
+      ]
     },
     "battle_win": {
-      "text": "The cold blue light cuts through the fog like a searchlight. The auditors shriek, exposed, and scatter like receipts in the wind.\n\nThe captain grins. He's a skull, so he's always grinning, but this time he means it. \"To the drive-thru!\"",
-      "choices": [{ "label": "Set a course for the drive-thru", "to": "end_curse_lifted" }]
+      "text": "The fog clears. The enemy ship is gone. The crew erupts in cheers, which sound like wind howling through a chimney, but happy.\n\nCaptain Marrowbone strides onto the deck, hat feathers streaming. He looks at you, and his skull is always grinning, but this time he means it.\n\n“Mr. Wobbly,” he roars. “Set a course for Route Nine!”",
+      "choices": [
+        {
+          "label": "Take your place at the rail",
+          "to": "voyage"
+        }
+      ]
+    },
+    "voyage": {
+      "chapter": "Chapter 5 · Route Nine",
+      "text": "The galleon sails up Route Nine on a river of fog, three feet above the asphalt. Cars swerve. A guy in a minivan rolls down his window to take a picture and then just keeps staring.\n\nUp ahead, the road dips under a concrete overpass. A sign on it reads CLEARANCE 14 FT. The galleon’s mainmast is roughly ninety feet tall.\n\nMr. Wobbly does not appear to have noticed.",
+      "choices": [
+        {
+          "label": "Yell for Wobbly to lower the masts",
+          "to": "overpass_masts"
+        },
+        {
+          "label": "Tell Wobbly to fly higher, over the overpass",
+          "to": "overpass_over"
+        },
+        {
+          "label": "Let it happen. They’re ghosts. It’ll pass right through.",
+          "to": "end_clearance"
+        }
+      ]
+    },
+    "end_clearance": {
+      "text": "You’re right. The ship passes right through the overpass, masts and all, like smoke through a screen door.\n\nYou, however, are not a ghost. You were standing on the deck at about thirty feet. The overpass was at fourteen. The math is not on your side.",
+      "ending": {
+        "id": "clearance",
+        "title": "Low Clearance",
+        "kind": "death"
+      }
+    },
+    "overpass_masts": {
+      "text": "“LOWER THE MASTS!” you scream. Mr. Wobbly blinks, sees the overpass, and spins the wheel. The crew hauls on ropes, and the masts fold down like a cheap umbrella.\n\nThe galleon scrapes under the overpass with an inch to spare. A pigeon nesting under the bridge gets a very close look at Mr. Wobbly. Neither of them enjoys it.",
+      "choices": [
+        {
+          "label": "Keep sailing",
+          "to": "traffic_stop"
+        }
+      ]
+    },
+    "overpass_over": {
+      "text": "“Higher!” you yell. Mr. Wobbly hauls back on the wheel like it’s a plane, which it isn’t, and the galleon somehow climbs, which it shouldn’t. You sail over the overpass, keel brushing the top of a semi truck.\n\nThe truck driver honks twice. You choose to believe it’s a salute.",
+      "choices": [
+        {
+          "label": "Keep sailing",
+          "to": "traffic_stop"
+        }
+      ]
+    },
+    "traffic_stop": {
+      "text": "Red and blue lights flash behind you. A police cruiser pulls up alongside the hull, siren whooping, and an officer leans out the window with a megaphone.\n\n“PULL THE, UH. PULL THE SHIP OVER.”\n\nMr. Wobbly, to everyone’s surprise, does. The cruiser stops. A man climbs out, hitches up his belt, and climbs the gangplank with great dignity. His name tag says OFFICER DALE.\n\n“License and registration,” he says.",
+      "choices": [
+        {
+          "label": "Hand him the captain’s logbook as registration",
+          "to": "cop_logbook",
+          "if": [
+            "logbook"
+          ]
+        },
+        {
+          "label": "Slip him the cursed doubloon",
+          "to": "cop_bribe",
+          "if": [
+            "doubloon"
+          ]
+        },
+        {
+          "label": "Let Polly-Gone handle it",
+          "to": "cop_parrot",
+          "if": [
+            "parrot"
+          ]
+        },
+        {
+          "label": "Argue about maritime jurisdiction",
+          "to": "jurisdiction"
+        },
+        {
+          "label": "Tell Wobbly to floor it",
+          "to": "cop_chase"
+        }
+      ]
+    },
+    "cop_logbook": {
+      "text": "Officer Dale flips through the logbook. Ship’s name, port of origin, tonnage, a three-hundred-year maintenance history, all in order.\n\n“Huh,” he says. “This is more paperwork than my car has.” He hands it back. “Get that taillight looked at.” The galleon does not have a taillight. You decide not to argue.",
+      "choices": [
+        {
+          "label": "Sail on",
+          "to": "nugget_hut"
+        }
+      ]
+    },
+    "cop_bribe": {
+      "text": "You press the doubloon into Officer Dale’s hand. He looks at it, then at you. “Is this a bribe?”\n\n“It’s a gift. A cursed gift.”\n\nHe weighs it in his palm, and as he does, his whole body goes slightly see-through. He looks down at his own hands with mild interest. “Well. Huh.” He takes off his hat. “Permission to come aboard? Turns out I’m dead now.”\n\nThe crew welcomes him. He’s good at knots.",
+      "set": [
+        "!doubloon"
+      ],
+      "choices": [
+        {
+          "label": "Sail on, one officer richer",
+          "to": "nugget_hut"
+        }
+      ]
+    },
+    "cop_parrot": {
+      "text": "Polly-Gone hops off your shoulder, flaps its fleshless wings, and lets out a perfect imitation of a police siren, then a dispatcher’s voice: “ALL UNITS, ALL UNITS, ROBBERY IN PROGRESS AT THE DONUT SHOP ON FIFTH.”\n\nOfficer Dale is down the gangplank and in his cruiser before the parrot finishes the sentence. The siren fades into the distance. Polly-Gone lands back on your shoulder and clacks smugly.",
+      "choices": [
+        {
+          "label": "Sail on",
+          "to": "nugget_hut"
+        }
+      ]
+    },
+    "jurisdiction": {
+      "text": "“This is a sailing vessel,” you say. “You have no jurisdiction here. This is a matter of maritime law.”\n\nOfficer Dale looks over the rail at the asphalt three feet below. “We’re on Route Nine.”\n\n“We’re on fog. Over Route Nine.”\n\nHe takes out his notepad. “Fog,” he says slowly, writing it down, “is not international waters.”",
+      "choices": [
+        {
+          "label": "“Fog is absolutely international waters.”",
+          "to": "end_jail"
+        },
+        {
+          "label": "“Fine. Just write the ticket.”",
+          "to": "cop_ticket"
+        }
+      ]
+    },
+    "end_jail": {
+      "text": "It turns out fog is not international waters. Officer Dale has a long conversation with his sergeant, who has a long conversation with a judge, and you spend thirty days in county jail for operating an unregistered vessel and “sass.”\n\nThe crew visits every day. They can walk through the walls, so visiting hours don’t really apply. Chef Bartholomew brings soup. You don’t eat it.",
+      "ending": {
+        "id": "jail",
+        "title": "International Fog",
+        "kind": "strange"
+      }
+    },
+    "cop_ticket": {
+      "text": "Officer Dale writes you a ticket for “operating a vessel with no visible hull.” You look at the ticket. You look at the very visible hull. You decide this is not the hill.\n\nHe tears it off with a flourish and tips his hat. “Drive safe. Sail safe. Whatever this is.”",
+      "choices": [
+        {
+          "label": "Sail on",
+          "to": "nugget_hut"
+        }
+      ]
+    },
+    "cop_chase": {
+      "text": "“FLOOR IT!” Mr. Wobbly spins the wheel and the galleon lurches forward, leaving Officer Dale standing on empty air for one long, cartoon moment before he drops three feet to the road.\n\nThe cruiser gives chase, siren wailing. The galleon is fast, but the cruiser is faster, and gaining. Ahead you see an automatic car wash.",
+      "choices": [
+        {
+          "label": "Steer into the car wash",
+          "to": "cop_wash"
+        },
+        {
+          "label": "Fire a warning shot from the cannons",
+          "to": "end_jail"
+        }
+      ]
+    },
+    "cop_wash": {
+      "text": "The galleon sails straight into the car wash. The brushes spin. The soap foams. For ninety seconds, the whole ship is lost in a cloud of suds and blue lantern light and ghosts screaming with joy.\n\nWhen you come out the other end, the cruiser has gone right past. You are the cleanest ghost ship in history.",
+      "choices": [
+        {
+          "label": "Sail on",
+          "to": "nugget_hut"
+        }
+      ]
+    },
+    "nugget_hut": {
+      "chapter": "Chapter 6 · The Participating Location",
+      "text": "There it is, at the end of Route Nine: the original Nugget Hut. The building still has its roof shaped like a giant nugget.\n\nThe sign out front does not say Nugget Hut. It says SPROUT & SORROW: ETHICAL BOWLS. The menu in the window is mostly kale.\n\nThe galleon settles into the parking lot. Captain Marrowbone stares at the sign for a long time. When he finally speaks, his voice is very small. “No.”",
+      "choices": [
+        {
+          "label": "Go inside",
+          "to": "cafe"
+        }
+      ]
+    },
+    "cafe": {
+      "text": "Inside, the café is all reclaimed wood and hanging plants. Behind the counter, a barista with a nose ring and the steady eyes of someone who has seen every kind of customer looks at you, then out the window at the ghost ship, then back at you.\n\n“Hi,” she says. “I’m Juniper. We don’t do nuggets.”\n\nBehind the counter, a door is marked STAFF ONLY: BASEMENT. A wall phone has a faded sticker: NUGGET HUT CORPORATE HOTLINE.",
+      "choices": [
+        {
+          "label": "Explain the curse to Juniper",
+          "to": "juniper"
+        },
+        {
+          "label": "Sneak down to the basement",
+          "to": "basement"
+        },
+        {
+          "label": "Call Nugget Hut corporate",
+          "to": "corporate"
+        }
+      ]
+    },
+    "corporate": {
+      "text": "You pick up the wall phone. It still has a dial tone. A recorded voice says, “Thank you for calling Nugget Hut corporate. Your call is very important to us. Please hold.”\n\nHold music begins. It’s a smooth jazz arrangement of a song you can’t quite place.",
+      "choices": [
+        {
+          "label": "Keep holding",
+          "to": "end_hold"
+        },
+        {
+          "label": "Hang up and talk to Juniper instead",
+          "to": "juniper"
+        }
+      ]
+    },
+    "end_hold": {
+      "text": "You hold.\n\nYou hold through the afternoon. You hold through the night. The captain falls asleep in a booth. The crew goes back to the ship. Juniper closes up and leaves you a key.\n\nYou are still holding. Your call is very important to them. One day, you’re sure, someone will pick up. Until then, you are the curse now.",
+      "ending": {
+        "id": "hold-music",
+        "title": "Your Call Is Important",
+        "kind": "strange"
+      }
+    },
+    "juniper": {
+      "text": "You tell her everything. The witch, 1715, the Golden Age of Nuggets, the coupon, the auditors. She listens without interrupting, which you appreciate.\n\nWhen you finish, she looks out the window at Captain Marrowbone, who is standing in the parking lot with his hat in his hands, staring at the giant nugget on the roof.\n\n“Okay,” she says. “That’s really sad.” She thinks. “I can’t make chicken nuggets. But I can make cauliflower nuggets. They’re pretty good. And there’s a lot of old Nugget Hut stuff in the basement. Nobody’s been down there in years.”",
+      "choices": [
+        {
+          "label": "“Make the cauliflower nuggets.”",
+          "to": "cauliflower"
+        },
+        {
+          "label": "“Can I see the basement?”",
+          "to": "basement"
+        }
+      ]
+    },
+    "cauliflower": {
+      "text": "Juniper fries up twenty cauliflower nuggets, golden and crisp, and arranges them in a paper boat. They look exactly like the real thing. They smell almost like the real thing.\n\nCaptain Marrowbone takes the boat in both hands. He lifts one to his teeth. Then he pauses, and his eye sockets turn to you.\n\n“Is this,” he says, “chicken?”",
+      "choices": [
+        {
+          "label": "“Yes.”",
+          "to": "end_plant"
+        },
+        {
+          "label": "“No. It’s cauliflower. I’m sorry.”",
+          "to": "cauliflower_truth"
+        }
+      ]
+    },
+    "end_plant": {
+      "text": "He eats all twenty. With each one, he gets a little fainter. At the last one, he closes his eyes.\n\n“The Golden Age,” he whispers. “Just as I remember.”\n\nHe fades. The crew fades with him, waving. The galleon dissolves into the fog. Juniper looks at you. “Should we tell him?” But there’s no one left to tell.\n\nIt worked. It worked on a lie. You will think about that for the rest of your life, usually around dinnertime.",
+      "ending": {
+        "id": "plant-based",
+        "title": "Plant-Based Afterlife",
+        "kind": "victory"
+      }
+    },
+    "cauliflower_truth": {
+      "text": "The captain sets down the boat. You brace for rage. Instead, he puts a bony hand on your shoulder.\n\n“Thank ye,” he says. “Three hundred years, and nobody ever told me the truth about my food.” He turns to Juniper. “Lass, they’re very good. But it has to be the real thing. The curse would know.”\n\nJuniper sighs and pulls a ring of keys from under the register. “Basement,” she says. “Come on.”",
+      "choices": [
+        {
+          "label": "Follow her down",
+          "to": "basement"
+        }
+      ]
+    },
+    "basement": {
+      "text": "The basement stairs creak. At the bottom is total darkness and the smell of very old frying oil. Somewhere down here, a compressor is humming.\n\nYou feel around on the wall for a light switch and find nothing but cobwebs.",
+      "choices": [
+        {
+          "label": "Hold up the blue lantern",
+          "to": "basement_lit",
+          "if": [
+            "lantern"
+          ]
+        },
+        {
+          "label": "Feel your way toward the humming",
+          "to": "end_fryer"
+        },
+        {
+          "label": "Go back upstairs",
+          "to": "cafe"
+        }
+      ]
+    },
+    "end_fryer": {
+      "text": "You feel your way toward the humming. Your hands find something big and metal and warm. Warm? Why would anything down here be warm?\n\nYou find the fryer. It’s on. It has been on, unattended, since 1987. Nobody knows how. Nobody will ever know. You are, briefly, a nugget.",
+      "ending": {
+        "id": "fryer",
+        "title": "Golden Brown",
+        "kind": "death"
+      }
+    },
+    "basement_lit": {
+      "text": "Blue light floods the basement. It’s a museum of the Golden Age: stacks of paper nugget boats, a cardboard cutout of Nugget Hut’s mascot, Sir Crunchalot, and an industrial fryer, its oil glowing a faint, impossible gold. It’s on. It has been on since 1987. You decide not to touch it.\n\nIn the corner, a chest freezer hums. Taped to the lid is a note: LAST BOX. DO NOT SELL. — MGMT, 1987.",
+      "choices": [
+        {
+          "label": "Open the freezer",
+          "to": "freezer"
+        }
+      ]
+    },
+    "freezer": {
+      "text": "Inside, under a crust of frost, is a single box: NUGGET HUT ORIGINAL RECIPE, 20 PIECES. The Golden Age, frozen solid since 1987.\n\nJuniper comes down the stairs behind you and stops dead. “No way.” She looks at the glowing fryer, then at you, and sighs. “I worked at a Nugget Hut in high school. I don’t talk about it.” She rolls up her sleeves. “Give me the box.”",
+      "choices": [
+        {
+          "label": "Hand Juniper the box",
+          "to": "frying"
+        }
+      ]
+    },
+    "frying": {
+      "text": "Juniper works the fryer like she’s been waiting her whole life for this moment, and maybe she has. The basket drops. The oil roars. The smell rises up the stairs and out into the parking lot, and every ghost on that galleon turns their head at once.\n\nFour minutes later, twenty golden nuggets sit in a paper boat. Juniper hands it to you. “You should be the one to give it to him.”\n\nYou carry it upstairs. The captain is waiting at the counter, hat in his hands.",
+      "choices": [
+        {
+          "label": "Hand him the nuggets, and the coupon",
+          "to": "farewell",
+          "if": [
+            "!doubloon"
+          ]
+        },
+        {
+          "label": "Hand him the nuggets, and the coupon",
+          "to": "cold_pocket",
+          "if": [
+            "doubloon"
+          ]
+        }
+      ]
+    },
+    "cold_pocket": {
+      "text": "As you reach out, your pocket goes ice cold. Colder than the freezer. Colder than the fog. The doubloon you took from the hold is pulsing against your leg like a second heartbeat.\n\nThe captain’s eye sockets drift to your pocket. He doesn’t say anything. He doesn’t have to. Whatever’s about to happen to his crew, that coin wants to take you along for it.",
+      "choices": [
+        {
+          "label": "Toss the doubloon into the fryer",
+          "to": "doubloon_fryer"
+        },
+        {
+          "label": "Keep it. You earned it.",
+          "to": "end_sticky"
+        }
+      ]
+    },
+    "doubloon_fryer": {
+      "text": "You fish out the doubloon and flick it down the basement stairs. A second later you hear it hit the fryer oil with a hiss like an angry cat. Then silence.\n\nYour pocket warms up. The captain nods once, slowly. “Wise,” he says. “Pennywhistle would have found out eventually. He always does.”",
+      "set": [
+        "!doubloon"
+      ],
+      "choices": [
+        {
+          "label": "Hand him the nuggets, and the coupon",
+          "to": "farewell"
+        }
+      ]
+    },
+    "end_sticky": {
+      "text": "The captain takes the nuggets and the coupon. He eats. With each bite, he grows fainter, and so do his crew, and so do you.\n\nYou look down at your hands, going translucent, and at the cold coin in your pocket that never belonged to you.\n\nYou fade into the fog with the crew of the galleon. Pennywhistle is waiting on the other side with the ledger. “Ten thousand,” he says. “Exactly.” He looks at you over his spectacles. “Welcome aboard.”",
+      "ending": {
+        "id": "sticky",
+        "title": "Sticky Fingers",
+        "kind": "death"
+      }
+    },
+    "farewell": {
+      "text": "Captain Marrowbone takes the coupon first. He reads it one more time. Then he takes the paper boat.\n\nHe eats the first nugget, and closes his eyes, and for a long moment nobody in the café breathes. When he opens them again, they are not glowing. They’re just eyes. Old, tired, happy eyes.\n\n“The Golden Age,” he whispers. He eats the rest slowly, one at a time. As he does, he fades, and outside, the crew begins to fade too, one by one, waving.\n\nAt the very end, he takes off his magnificent hat and holds it out to you. “The ship needs a captain,” he says. “Or it needs to rest. Your call.”",
+      "choices": [
+        {
+          "label": "Take the hat",
+          "to": "end_curse_lifted"
+        },
+        {
+          "label": "“Let her rest with you.”",
+          "to": "end_let_go"
+        }
+      ]
     },
     "end_curse_lifted": {
-      "text": "The galleon does not fit in the drive-thru lane. It is now a former drive-thru lane.\n\nThe cashier, shaking, honors the coupon. The captain eats all twenty pieces, sheds a single ectoplasmic tear, and fades into peace. The crew follows, one by one, waving.\n\nThey leave you the ship. Parking is going to be a problem.",
-      "ending": { "id": "curse-lifted", "title": "Curse Lifted", "kind": "victory" }
+      "text": "You put on the hat. It fits perfectly, which is unsettling.\n\nThe captain smiles, and is gone. Outside, the galleon is still there, solid now, no longer a ghost, just a very large, very old, very real ship parked across eleven spaces of a vegan café’s parking lot.\n\nJuniper comes up from the basement and looks out the window. “Is that yours now?”\n\nIt is. Parking is going to be a problem. But it’s yours.",
+      "ending": {
+        "id": "curse-lifted",
+        "title": "Curse Lifted",
+        "kind": "victory"
+      }
+    },
+    "end_let_go": {
+      "text": "The captain nods, and puts his hat back on. “Aye,” he says. “She’s earned it.”\n\nOutside, the galleon turns to mist from the keel up, the sails last, and the crew stands on deck waving until there’s no deck left to stand on. Mr. Wobbly waves the longest. Polly-Gone circles once over the parking lot and then is just a breeze.\n\nThe café is quiet. Juniper puts a CLOSED sign on the door and sits down next to you. She’s holding two coffees. Neither of you says anything for a long time. It’s a good kind of quiet.",
+      "ending": {
+        "id": "let-go",
+        "title": "Fair Winds",
+        "kind": "victory"
+      }
+    },
+    "floor_it": {
+      "text": "You floor it. The Civic shudders up to fifty-two miles per hour and holds there, engine screaming like a teakettle.\n\nBOOM. A cannonball sails over the roof and craters the road a hundred yards ahead. A warning shot. The one-legged pirate’s voice drifts down through the fog: “That was the polite one!”",
+      "choices": [
+        {
+          "label": "Keep your foot down",
+          "to": "end_civic_chase"
+        },
+        {
+          "label": "Pull over and surrender to the ghost ship",
+          "to": "car_wash_skip"
+        }
+      ]
+    },
+    "car_wash_skip": {
+      "text": "You pull onto the shoulder. The galleon drifts down beside you and lowers a gangplank onto the hood of the Civic, leaving a long scratch you’ll never get out.\n\n“Smart,” says the one-legged pirate. “The next one wasn’t going to be polite.”",
+      "choices": [
+        {
+          "label": "Climb aboard",
+          "to": "gangplank"
+        }
+      ]
+    },
+    "soup_taste": {
+      "text": "You take the ladle. The soup is ice cold and weighs nothing at all. It smells like nutmeg and a word you can’t quite remember.\n\nBartholomew leans in, eyes shining. Behind him, a sailor in the doorway is frantically shaking his head at you and mouthing something. It looks like DON’T.",
+      "choices": [
+        {
+          "label": "Swallow it",
+          "to": "end_soup"
+        },
+        {
+          "label": "Fake a sip and hand back the ladle",
+          "to": "galley_sulk"
+        }
+      ]
+    },
+    "mittens_pet": {
+      "text": "The cat watches your hand come closer. It doesn’t move away. It leans in, and your fingers pass into its head like it’s made of cold smoke.\n\nSomething small and fuzzy and very decided settles into the back of your mind. Pennywhistle, without looking up from his ledger, says: “I would stop now, if I were you. She’s choosing.”",
+      "choices": [
+        {
+          "label": "Let her choose",
+          "to": "end_mittens"
+        },
+        {
+          "label": "Pull your hand back",
+          "to": "hold"
+        }
+      ]
     }
   }
 }

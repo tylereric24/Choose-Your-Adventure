@@ -3,6 +3,8 @@
 // A story is a graph of nodes. Non-ending nodes have choices; ending nodes have an `ending`.
 // Choices can be gated on flags (`if: ["rope", "!map"]`) and can set or clear flags
 // (`set: ["rope", "!map"]`). Nodes can also set flags on entry.
+// Flags listed in `story.items` are shown to the player as inventory; the rest are hidden state.
+// A node with `chapter` starts a chapter and acts as a checkpoint.
 
 export const ENDING_KINDS = ['death', 'victory', 'strange'];
 const FLAG_RE = /^!?[a-z0-9_-]+$/;
@@ -79,6 +81,31 @@ export function isValidState(story, state) {
   );
 }
 
+// Most recent chapter checkpoint strictly before the current node, or a fresh run.
+export function rewindToChapter(story, state) {
+  let s = state;
+  while (s.history.length) {
+    s = rewind(s);
+    if (story.nodes[s.node].chapter) return s;
+  }
+  return startRun(story);
+}
+
+export function chapterOf(story, state) {
+  const own = story.nodes[state.node]?.chapter;
+  if (own) return own;
+  for (let i = state.history.length - 1; i >= 0; i--) {
+    const ch = story.nodes[state.history[i].node]?.chapter;
+    if (ch) return ch;
+  }
+  return null;
+}
+
+export function inventory(story, state) {
+  const items = story.items ?? {};
+  return state.flags.filter((f) => items[f]).map((f) => ({ id: f, name: items[f] }));
+}
+
 export function listEndings(story) {
   return Object.entries(story.nodes)
     .filter(([, node]) => node.ending)
@@ -88,7 +115,7 @@ export function listEndings(story) {
 // Structural checks plus an exhaustive walk of the (node, flags) state space.
 // Catches broken links, dead ends, unreachable content, unreachable endings,
 // and loops a player can get trapped in with no route to any ending.
-export function validateStory(story, { maxStates = 50000 } = {}) {
+export function validateStory(story, { maxStates = 200000 } = {}) {
   const errors = [];
   const err = (msg) => errors.push(msg);
 
@@ -100,10 +127,12 @@ export function validateStory(story, { maxStates = 50000 } = {}) {
     return { errors, stats: null };
   }
   if (!story.nodes[story.start]) err(`start node "${story.start}" does not exist`);
+  for (const f of Object.keys(story.items ?? {})) if (!FLAG_RE.test(f) || f.startsWith('!')) err(`bad item flag "${f}"`);
 
   const endingIds = new Set();
   for (const [id, node] of Object.entries(story.nodes)) {
     if (typeof node.text !== 'string' || !node.text.trim()) err(`${id}: missing text`);
+    if (node.chapter !== undefined && (typeof node.chapter !== 'string' || !node.chapter)) err(`${id}: bad chapter`);
     for (const f of node.set ?? []) if (!FLAG_RE.test(f)) err(`${id}: bad flag "${f}"`);
     if (node.ending) {
       if (node.choices?.length) err(`${id}: ending node must not have choices`);

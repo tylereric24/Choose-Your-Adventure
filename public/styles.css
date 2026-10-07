@@ -385,6 +385,43 @@ h3 {
   color: var(--muted);
 }
 
+.chapter {
+  margin: 0 0 14px;
+  color: color-mix(in oklab, var(--accent) var(--ink-mix), var(--text));
+  font: 700 12px/1 var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.inventory {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inventory li {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.inventory li.new {
+  border-color: var(--accent);
+  color: var(--text);
+  animation: rise 0.35s ease-out;
+}
+
+.inventory li.new::before {
+  content: '+ ';
+  color: color-mix(in oklab, var(--accent) var(--ink-mix), var(--text));
+}
+
 .passage {
   font: 19px/1.7 var(--serif);
   cursor: default;

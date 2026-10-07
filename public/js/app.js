@@ -2,6 +2,9 @@ import {
   startRun,
   choose,
   rewind,
+  rewindToChapter,
+  chapterOf,
+  inventory,
   choicesFor,
   currentNode,
   endingOf,
@@ -296,6 +299,13 @@ async function viewPlay(id) {
     draw(true);
   }
 
+  function restartChapter() {
+    run = rewindToChapter(story, run);
+    note = null;
+    store.saveRun(id, run);
+    draw(true);
+  }
+
   async function pick(choice) {
     if (busy) return;
     busy = true;
@@ -344,6 +354,7 @@ async function viewPlay(id) {
         'div',
         { class: 'ending-actions' },
         h('button', { class: 'btn', onclick: doRewind }, 'Undo last choice'),
+        chapterOf(story, run) ? h('button', { class: 'btn', onclick: restartChapter }, 'Restart chapter') : null,
         h('button', { class: 'btn btn-accent', onclick: restart }, 'Play again'),
         h('a', { class: 'btn btn-ghost', href: `#/endings/${id}` }, 'All endings'),
         h('button', { class: 'btn btn-ghost', onclick: () => shareEnding(story, ending) }, 'Share'),
@@ -385,6 +396,15 @@ async function viewPlay(id) {
           ),
     );
     const showArt = story.art && run.node === story.start && !run.history.length;
+    const prevFlags = run.history.at(-1)?.flags ?? [];
+    const items = inventory(story, run);
+    const bag = items.length
+      ? h(
+          'ul',
+          { class: 'inventory', 'aria-label': 'Inventory' },
+          items.map((it) => h('li', { class: prevFlags.includes(it.id) ? null : 'new' }, it.name)),
+        )
+      : null;
 
     page.replaceChildren(
       topbar(),
@@ -406,7 +426,9 @@ async function viewPlay(id) {
         { class: 'stage' },
         showArt ? h('pre', { class: 'art', 'aria-hidden': 'true' }, story.art) : null,
         note,
+        node.chapter ? h('p', { class: 'chapter' }, node.chapter) : null,
         passage,
+        ending ? null : bag,
         choices,
         h('div', { class: 'ending-slot' }),
       ),

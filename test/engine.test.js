@@ -1,6 +1,17 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { startRun, choose, rewind, choicesFor, endingOf, validateStory, isValidState } from '../public/js/engine.js';
+import {
+  startRun,
+  choose,
+  rewind,
+  rewindToChapter,
+  chapterOf,
+  inventory,
+  choicesFor,
+  endingOf,
+  validateStory,
+  isValidState,
+} from '../public/js/engine.js';
 import { loadStories } from '../server/stories.js';
 
 const tiny = () => ({
@@ -55,6 +66,27 @@ test('rewind restores node and flags', () => {
   assert.deepEqual(back.flags, []);
   assert.equal(back.history.length, 0);
   assert.equal(rewind(back), back);
+});
+
+test('chapters act as checkpoints', () => {
+  const s = tiny();
+  s.nodes.b.chapter = 'Chapter 2';
+  let run = choose(s, startRun(s), 0); // -> b (chapter 2), gets key
+  run = choose(s, run, 0); // -> a
+  run = choose(s, run, 2); // -> dead
+  assert.equal(chapterOf(s, run), 'Chapter 2');
+  const back = rewindToChapter(s, run);
+  assert.equal(back.node, 'b');
+  assert.deepEqual(back.flags, ['key']);
+  // No checkpoint in history: falls back to a fresh run.
+  assert.equal(rewindToChapter(s, choose(s, startRun(s), 2)).node, 'a');
+});
+
+test('inventory lists only flags declared as items', () => {
+  const s = tiny();
+  s.items = { key: 'Brass key' };
+  const run = choose(s, startRun(s), 0);
+  assert.deepEqual(inventory(s, { ...run, flags: [...run.flags, 'hidden'] }), [{ id: 'key', name: 'Brass key' }]);
 });
 
 test('isValidState rejects stale saves', () => {

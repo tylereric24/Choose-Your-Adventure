@@ -60,11 +60,16 @@ def play(story):
     while True:
         node = story["nodes"][node_id]
         print()
+        if node.get("chapter"):
+            print(f"=== {node['chapter']} ===\n")
         say(node["text"])
         if "ending" in node:
             e = node["ending"]
             print(f"*** {KIND[e['kind']]}: {e['title']} ***\n")
             return
+        items = [name for flag, name in story.get("items", {}).items() if flag in flags]
+        if items:
+            print(f"[Carrying: {', '.join(items)}]")
         options = [c for c in node["choices"] if all(holds(flags, x) for x in c.get("if", []))]
         for i, c in enumerate(options, 1):
             print(f"  {i}. {c['label']}")
